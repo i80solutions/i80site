@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is RAG Dead?</title>
+  <meta name="description" content="A practical reflection on whether retrieval-augmented generation is still useful for domain-specific AI agents.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8fafc;
+    }
+
+    .article-wrap {
+      max-width: 880px;
+    }
+
+    .article-body {
+      background: #fff;
+      border: 1px solid var(--i80-border);
+      border-radius: 8px;
+      padding: 42px;
+      box-shadow: 0 10px 35px rgba(17,24,39,0.04);
+    }
+
+    .article-body h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+      margin-bottom: 14px;
+    }
+
+    .article-body h2 {
+      margin-top: 42px;
+      margin-bottom: 14px;
+      font-weight: 780;
+      letter-spacing: -0.03em;
+    }
+
+    .article-body p,
+    .article-body li {
+      font-size: 1.06rem;
+    }
+
+    .article-meta {
+      color: var(--i80-muted);
+      margin-bottom: 32px;
+    }
+
+    .article-callout {
+      border-left: 4px solid var(--i80-accent);
+      background: #f8fafc;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 768px) {
+      .article-body {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span></a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container article-wrap">
+      <article class="article-body">
+        <div class="section-kicker">Reflections</div>
+        <h1>Is RAG Dead?</h1>
+        <p class="article-meta">By Alex P. Wang | May 2, 2026 | Tags: RAG, AI Agents, Retrieval, Domain Knowledge</p>
+
+        <p class="lead">
+          AI is moving so fast that new terms appear every few weeks. Just as quickly, people begin
+          declaring older terms, tools, or approaches dead. RAG is one of those terms.
+        </p>
+
+        <p>
+          But terms are not the most important thing. What matters is what a system actually does.
+          Many ideas do not die; they adapt, become clearer, and improve as the surrounding technology
+          gets better.
+        </p>
+
+        <p>
+          Retrieval-Augmented Generation was probably a bad term to begin with. It sounds like a narrow
+          technique, when the underlying idea is broader: connect a language model to trusted external
+          knowledge so it can answer with the right context instead of relying only on what it learned
+          during training.
+        </p>
+
+        <p>
+          So when people ask whether RAG is dead, I think the better answer is this: the concept behind
+          RAG is not dead. But naive RAG is not enough.
+        </p>
+
+        <p>
+          The question usually comes from a real place. Models are getting better. Context windows are
+          getting larger. Agents can use tools, browse files, call APIs, and reason across more information
+          than they could before. So it is reasonable to ask: if the model can hold more context and do
+          more work on its own, do we still need retrieval?
+        </p>
+
+        <div class="article-callout">
+          <strong>My short answer:</strong> RAG is not dead. But naive RAG is not enough.
+        </div>
+
+        <h2>What People Usually Mean by RAG</h2>
+        <p>
+          When people say RAG, they often mean a simple pipeline:
+        </p>
+        <ul>
+          <li>Break documents into chunks</li>
+          <li>Create embeddings for those chunks</li>
+          <li>Store them in a vector database</li>
+          <li>Retrieve the closest chunks for a user question</li>
+          <li>Send those chunks to an LLM and ask it to answer</li>
+        </ul>
+        <p>
+          That approach was a useful starting point. It gave builders a way to connect language models
+          to external knowledge without retraining the model. But it also exposed a lot of weaknesses.
+          Chunking can split meaning in awkward places. Retrieval can return content that is related but
+          not actually useful. The model may still hallucinate if the retrieved context is incomplete,
+          vague, or poorly structured.
+        </p>
+
+        <p>
+          If that is the only definition of RAG, then yes, that version feels limited.
+          But retrieval itself is not the problem. The problem is treating retrieval as a generic
+          document search trick instead of a knowledge design problem.
+        </p>
+
+        <h2>Why Retrieval Still Matters</h2>
+        <p>
+          Domain-specific AI agents need trusted knowledge. A hotel assistant needs hotel policies,
+          room details, breakfast times, shuttle instructions, local context, and operational boundaries.
+          An HR assistant needs company-specific benefits, onboarding steps, escalation paths, and policy
+          language. A personal knowledge agent needs memories, stories, preferences, and prior decisions.
+        </p>
+
+        <p>
+          None of that knowledge is automatically inside a public language model. Even if a model is
+          powerful, it still needs access to the right facts at the right time.
+        </p>
+
+        <p>
+          Long context helps, but it does not remove the need to decide what belongs in the context.
+          Putting everything into the prompt is not a strategy. It can be expensive, noisy, hard to audit,
+          and difficult to update. Good retrieval is still a way to focus the model on the most relevant,
+          trusted information.
+        </p>
+
+        <h2>Why Not Just Put Everything in the Prompt?</h2>
+        <p>
+          As context windows grow, it is tempting to ask a simple question: if the knowledge base fits,
+          why not just include everything?
+        </p>
+
+        <p>
+          I understand the appeal. It removes a lot of system design work. You do not need to tune
+          embeddings, decide how to chunk documents, build a vector database, or debug retrieval misses.
+          The system becomes almost seductively simple: user question plus full knowledge base equals answer.
+        </p>
+
+        <p>
+          For small demos, this can work surprisingly well. If the knowledge base is short, static, and
+          tightly scoped, full-context prompting may be enough. It can also be useful for exploratory
+          reading, summarization, or cross-document synthesis when the goal is to reason broadly across
+          a limited set of material.
+        </p>
+
+        <p>
+          But this shortcut trades one set of problems for another.
+        </p>
+
+        <h2>The Problem Is Focus</h2>
+        <p>
+          Large language models do not automatically know what matters most just because more text is
+          available. When everything is included, the signal can get weaker and the noise can get louder.
+          The result may be a vague answer, an answer that blends unrelated details, or an answer that
+          misses the one fact that actually matters.
+        </p>
+
+        <div class="article-callout">
+          More context does not always mean better answers. Better selected context usually matters more.
+        </div>
+
+        <p>
+          This is especially important for operational agents. A hotel assistant, HR agent, onboarding
+          assistant, or customer support agent needs precise answers, consistent wording, and policy-grounded
+          behavior. Dumping everything into the prompt can lead to mixed policies, inconsistent phrasing,
+          and higher hallucination risk.
+        </p>
+
+        <h2>The Cost and Control Problems</h2>
+        <p>
+          Full-context prompting also becomes expensive. If a system sends 100,000 tokens of knowledge
+          with every question, then 1,000 questions become 100 million input tokens. That may be acceptable
+          for an experiment, but it is a poor foundation for a real product.
+        </p>
+
+        <p>
+          Latency increases too. More tokens mean more input processing and slower responses. For support
+          agents and real-time user experiences, that delay matters.
+        </p>
+
+        <p>
+          Maintenance becomes harder as well. When knowledge changes, you need a clean way to update,
+          version, review, and organize it. A giant prompt does not naturally provide ownership,
+          structure, confidence signals, or auditability. It becomes harder to answer basic questions:
+          Which source was used? Why did the agent answer this way? What should be fixed when the answer
+          is wrong?
+        </p>
+
+        <p>
+          In small systems, these tradeoffs may be invisible. As the domain grows, they become unavoidable.
+        </p>
+
+        <h2>A Better Framing</h2>
+        <p>
+          The full-context approach treats the model as a smart reader of everything. But real domain
+          systems need something more disciplined: a decision-maker with the right information at the
+          right time.
+        </p>
+
+        <p>
+          That is why I think the real work is not dumping more information into the model. The real work
+          is designing the knowledge system around the model. That means selecting what matters, structuring
+          knowledge intentionally, retrieving with purpose, and routing based on confidence.
+        </p>
+
+        <p>
+          Full-context prompting has a place. It is useful for prototypes, small datasets, and broad
+          exploration. Retrieval becomes more important when accuracy matters, cost matters, the domain
+          evolves over time, and the agent needs to behave consistently.
+        </p>
+
+        <div class="article-callout">
+          Putting everything into the prompt is not a strategy. It is a shortcut that breaks at scale.
+        </div>
+
+        <p>
+          This is exactly where i80agent fits. i80agent is not about feeding more data into the model.
+          It is about structuring knowledge so the model gets the right data at the right time.
+        </p>
+
+        <h2>The Shift: From RAG Pipelines to Knowledge Systems</h2>
+        <p>
+          I think the better question is not whether RAG is dead. The better question is:
+          what should replace naive RAG?
+        </p>
+
+        <p>
+          My answer is a more deliberate knowledge system. That means:
+        </p>
+        <ul>
+          <li>Structuring knowledge around real user questions</li>
+          <li>Creating retrieval targets that map cleanly to useful answers</li>
+          <li>Separating facts, answer cards, policies, examples, and actions</li>
+          <li>Using confidence thresholds to decide when to answer, ask, escalate, or call an LLM</li>
+          <li>Continuously improving the knowledge base from real usage</li>
+        </ul>
+
+        <p>
+          In this model, embeddings are not just applied to random chunks of text. They become part of
+          a broader design: how the agent understands intent, finds trusted knowledge, and decides what
+          to do next.
+        </p>
+
+        <h2>Where Query-Focused Embeddings Fit</h2>
+        <p>
+          For limited-domain agents, I have found query-focused embeddings especially useful.
+          Instead of embedding only document chunks, the system embeds likely user questions or intent
+          patterns and connects them to structured answers.
+        </p>
+
+        <p>
+          This works well when the domain is focused and many questions are predictable. A hotel guest
+          may ask about breakfast in many different ways, but the answer should come from one trusted
+          source. A new employee may ask about benefits in different words, but the agent should still
+          route to the right policy-backed answer.
+        </p>
+
+        <p>
+          This does not mean chunk-based retrieval has no role. Larger documents, research material,
+          and open-ended exploration may still need chunk retrieval. But for operational assistants,
+          query-focused retrieval can make the system more precise, easier to evaluate, and easier to
+          improve over time.
+        </p>
+
+        <h2>RAG Is Becoming a Layer, Not the Whole System</h2>
+        <p>
+          The early excitement around RAG sometimes made it sound like retrieval plus an LLM was the
+          entire product. In practice, an agent needs more than that.
+        </p>
+
+        <p>
+          It needs knowledge management. It needs orchestration. It needs confidence routing.
+          It needs fallback behavior. It needs a way to handle missing knowledge. Eventually, it may
+          need to trigger actions through APIs, workflows, or human handoff.
+        </p>
+
+        <p>
+          Retrieval is still important, but it is one layer inside a larger agent architecture.
+          The future is not "RAG or no RAG." The future is better knowledge-grounded agents.
+        </p>
+
+        <h2>So, Is RAG Dead?</h2>
+        <p>
+          No. RAG is not dead.
+        </p>
+
+        <p>
+          But the simple version of RAG, where we chunk documents, retrieve a few passages, and hope
+          the model figures it out, is not enough for serious domain agents.
+        </p>
+
+        <p>
+          The next step is not abandoning retrieval. It is designing better knowledge systems around it.
+          Systems that know what content can be trusted, how it should be retrieved, when it is enough
+          to answer directly, when the LLM should synthesize, and when the agent should admit that it
+          does not know.
+        </p>
+
+        <p>
+          For i80agent, that is the road ahead: not just building a RAG pipeline, but building a platform
+          for domain-specific AI agents grounded in structured, evolving, trusted knowledge.
+        </p>
+
+        <div class="mt-5">
+          <a class="btn btn-outline-dark" href="../index.html#notes">Back to Ideas &amp; Notes</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div>© 2026 i80Solutions. All Rights Reserved.</div>
+      <div><a class="footer-link" href="mailto:alex@i80.com">alex@i80.com</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

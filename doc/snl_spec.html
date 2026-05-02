@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Structured Natural Language (SNL) Specification Standard</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --paper:#fff;
+      --ink:#172033;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --accent:#2563eb;
+      --accent2:#0f766e;
+      --code:#0f172a;
+      --header-h:72px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ------------------------------------------------------------
+       Header fix
+       The original site template may define #header as fixed/absolute.
+       For this document page, keep the header in normal document flow
+       so the content starts below it naturally.
+    ------------------------------------------------------------ */
+    #header{
+      position:relative !important;
+      top:auto !important;
+      left:auto !important;
+      right:auto !important;
+      z-index:10;
+      width:100%;
+      min-height:var(--header-h);
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      box-shadow:0 2px 14px rgba(15,23,42,.04);
+    }
+
+    #header .container{
+      width:min(1200px, calc(100% - 40px));
+      margin:0 auto;
+      min-height:var(--header-h);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    #header .logo{
+      margin:0;
+      font-size:28px;
+      line-height:1;
+      font-weight:700;
+    }
+
+    #header .logo a{
+      color:#0f172a;
+      text-decoration:none;
+    }
+
+    #header .logo span{
+      color:var(--accent);
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      max-width:1400px;
+      width:100%;
+      margin:0 auto;
+      flex:1;
+    }
+
+    aside{
+      position:sticky;
+      top:0;
+      height:100vh;
+      padding:28px 20px;
+      border-right:1px solid var(--line);
+      background:#fff;
+      overflow:auto;
+      align-self:start;
+    }
+
+    aside h2{font-size:15px;margin:0 0 16px;color:#0f172a}
+    aside a{display:block;color:#475569;text-decoration:none;font-size:14px;padding:6px 0}
+    aside a:hover{color:var(--accent)}
+
+    main{
+      min-width:0;
+      padding:40px 48px 80px;
+    }
+
+    .doc{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:44px;
+      box-shadow:0 12px 35px rgba(15,23,42,.06);
+    }
+
+    h1{font-size:38px;line-height:1.15;margin:0 0 10px;color:#0f172a}
+    .subtitle{font-size:18px;color:var(--muted);margin:0 0 28px}
+    h2{font-size:26px;margin:42px 0 12px;padding-top:10px;border-top:1px solid var(--line);color:#0f172a}
+    h3{font-size:20px;margin:28px 0 10px;color:#1e293b}
+    h4{font-size:16px;margin:22px 0 8px;color:#334155;text-transform:uppercase;letter-spacing:.04em}
+    p{margin:10px 0;color:#334155}
+    ul,ol{padding-left:24px;color:#334155}
+    li{margin:5px 0}
+    table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}
+    th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+    th{background:#f1f5f9;color:#0f172a;font-weight:700}
+    code{font-family:Consolas,Monaco,ui-monospace,monospace;background:#eef2ff;color:#1e3a8a;border-radius:5px;padding:2px 5px;font-size:.92em}
+    pre{background:var(--code);color:#e5e7eb;border-radius:14px;padding:18px;overflow:auto;font-size:13px;line-height:1.55}
+    pre code{background:transparent;color:inherit;padding:0}
+    .badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;margin-bottom:14px}
+    .callout{border-left:4px solid var(--accent);background:#eff6ff;padding:14px 16px;border-radius:10px;margin:18px 0;color:#1e3a8a}
+    .rule{border-left:4px solid var(--accent2);background:#ecfdf5;padding:14px 16px;border-radius:10px;margin:18px 0;color:#064e3b}
+    .article-meta{color:var(--muted);font-size:14px;margin-bottom:30px}
+    .article-meta a{color:var(--accent);text-decoration:none}
+    .page-break{page-break-before:always}
+
+    /* Footer fix */
+    #footer{
+      position:relative !important;
+      margin-top:0;
+      background:#fff;
+      border-top:1px solid var(--line);
+      color:#475569;
+      width:100%;
+    }
+
+    #footer .container{
+      width:min(1200px, calc(100% - 40px));
+      margin:0 auto;
+      padding:22px 0;
+    }
+
+    #footer .copyright{
+      text-align:center;
+      font-size:14px;
+    }
+
+    /* Anchor offset for clean in-page navigation */
+    section[id]{scroll-margin-top:24px}
+
+    @media(max-width:900px){
+      .layout{display:block}
+      aside{
+        position:relative;
+        top:auto;
+        height:auto;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      main{padding:20px}
+      .doc{padding:24px}
+      h1{font-size:30px}
+      #header .container,#footer .container{width:min(100% - 32px, 1200px)}
+    }
+
+    @media print{
+      body{background:#fff;display:block}
+      #header,#footer{display:none}
+      .layout{display:block;max-width:none}
+      .doc{box-shadow:none;border:0;padding:0;border-radius:0}
+      aside{display:none}
+      main{padding:0}
+      a{color:inherit}
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span></a>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <aside>
+      <h2>SNL Spec Standard</h2>
+      <a href="#purpose">1. Purpose</a>
+      <a href="#principles">2. Core Principles</a>
+      <a href="#required">3. Required vs Optional</a>
+      <a href="#template">4. Generic Template</a>
+      <a href="#sections">5. Section Definitions</a>
+      <a href="#example">6. Alex Menu Example</a>
+      <a href="#quality">7. Quality Checklist</a>
+      <a href="#workflow">8. Recommended Workflow</a>
+    </aside>
+    <main>
+      <article class="doc">
+        <span class="badge">SNL Standard v1.0</span>
+        <h1>Structured Natural Language Specification Standard</h1>
+  
+        <p class="subtitle">A disciplined human-readable format for writing software requirements that AI systems can reliably turn into working code.</p>
+          <p class="article-meta">By <a href="https://i80.com" target="_blank">Alex P. Wang</a> &nbsp;|&nbsp; Last updated: April 27, 2026  </p>
+
+<section id="purpose">
+  <h2>1. Purpose</h2>
+
+  <p>
+    <strong>Structured Natural Language (SNL)</strong> is a disciplined specification format for writing requirements,
+    behavior rules, workflows, data definitions, constraints, acceptance criteria, and test cases in precise human language.
+  </p>
+
+  <p>
+    Engineers are already using AI to generate code from conversational prompts.
+    A developer can describe a function, request a class, ask for a database schema,
+    or generate a user interface from a short paragraph.
+    This has already changed the daily rhythm of programming.
+  </p>
+
+  <p>
+    But free-form prompting is only the beginning.
+    Prompting alone is often too loose, too ambiguous, and too dependent on the model guessing what we mean.
+    It works well for prototypes, examples, and small tasks, but serious software requires far more discipline.
+  </p>
+
+  <p>
+    Production systems require clear boundaries, predictable behavior, validation rules,
+    failure handling, security controls, and acceptance criteria.
+    If these are not explicitly defined, the LLM will make assumptions—and assumptions are where most software problems begin.
+  </p>
+
+  <p>
+    SNL exists to remove that ambiguity before code generation begins.
+    It creates a shared language between business intent and technical implementation,
+    allowing product owners, solution architects, developers, testers, and LLM-based code generators
+    to work from the same source of truth.
+  </p>
+
+  <p>
+    A good SNL spec should answer:
+  </p>
+
+  <div class="callout">
+    <strong>What should be built, who uses it, what data it uses,
+    what rules it follows, what edge cases matter,
+    and how we know it works.</strong>
+  </div>
+
+  <p>
+    SNL is not casual documentation and it is not a replacement for architecture thinking.
+    It is the bridge between product intent and executable implementation.
+    It turns vague ideas into reliable systems.
+  </p>
+</section>
+
+        <section id="principles">
+          <h2>2. Core Principles</h2>
+          <ol>
+            <li><strong>Be explicit.</strong> Write what the system must do, must not do, and what happens when something fails.</li>
+            <li><strong>Separate goals from implementation.</strong> Describe the expected behavior first, then add implementation notes only where useful.</li>
+            <li><strong>Define boundaries.</strong> Use scope and non-goals to prevent overbuilding.</li>
+            <li><strong>Make data visible.</strong> Define inputs, outputs, fields, relationships, and validation rules.</li>
+            <li><strong>Make behavior testable.</strong> Every important rule should map to acceptance criteria or test cases.</li>
+            <li><strong>Assume untrusted input.</strong> Security, validation, and error handling are required sections.</li>
+          </ol>
+        </section>
+
+
+        <section id="markdown-format">
+  <h2>3. Markdown as Recommended Format for SNL</h2>
+
+  <p>
+    Structured Natural Language (SNL) is designed to be written by humans and interpreted by both software teams and LLMs.
+    Because of this, the format must be readable, maintainable, version-friendly, and easy to convert into implementation artifacts.
+    Markdown is the recommended source format because it provides the best balance between human readability and machine reliability.
+  </p>
+
+
+
+  <h3>Markdown Works Best for SNL</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Reason</th>
+        <th>Why It Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Human Readability</td>
+        <td>Architects, product owners, developers, and QA can read and review Markdown without special tools.</td>
+      </tr>
+      <tr>
+        <td>LLM-Friendly Structure</td>
+        <td>LLMs understand headings, lists, tables, and code blocks very reliably, improving code generation quality.</td>
+      </tr>
+      <tr>
+        <td>Version Control</td>
+        <td>Markdown works naturally with Git, allowing clear diffs, reviews, approvals, and change history.</td>
+      </tr>
+      <tr>
+        <td>Low Friction Editing</td>
+        <td>Specs can be updated quickly without requiring Word, PDF editors, or design tools.</td>
+      </tr>
+      <tr>
+        <td>Easy Publishing</td>
+        <td>Markdown can be converted into HTML documentation portals and exported to PDF when needed.</td>
+      </tr>
+      <tr>
+        <td>Supports Structured Sections</td>
+        <td>SNL relies heavily on section hierarchy, tables, rules, and examples—all of which Markdown handles well.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Recommended Document Flow</h3>
+
+  <pre><code>Markdown → HTML → PDF
+
+Markdown = Source of Truth
+HTML     = Working Documentation
+PDF      = Formal Review / Approval / Archive</code></pre>
+
+  <p>
+    PDF should not be the primary working format because it is difficult to revise,
+    difficult to version, and less effective for LLM-assisted workflows.
+  </p>
+
+  <h3>Example SNL Markdown Structure</h3>
+
+  <pre><code># SNL Spec: Course Topic Cards for Alex Menu App
+
+## 1. Goal
+
+Build clickable course topic cards for the Alex Menu App.
+
+## 2. Scope
+
+1. Display topic cards for a selected course
+2. Generate a question from a clicked topic
+3. Submit the generated question to the AI chat interface
+
+## 3. Behavior Rules
+
+BR-001: Topic cards must only appear after a course is selected.
+
+BR-002: A topic click must generate a natural-language question.
+
+BR-003: The generated question must be submitted through the same
+chat flow as a typed user question.</code></pre>
+
+  <div class="rule">
+    <strong>Professional Standard:</strong>
+    Do not treat the SNL document as temporary notes.
+    The Markdown SNL spec should remain the long-term source of truth for architecture decisions and future development.
+  </div>
+</section>
+
+<section id="required">
+  <h2>4. Required vs Optional Sections</h2>
+
+  <style>
+    .required-row td:nth-child(2) {
+      color: #dc2626;
+      font-weight: 700;
+    }
+
+    .required-row td:first-child {
+      font-weight: 600;
+    }
+  </style>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Required?</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="required-row"><td>Goal</td><td>Required</td><td>Defines the business and system objective.</td></tr>
+      <tr><td>Background / Context</td><td>Optional</td><td>Explains why the feature exists.</td></tr>
+      <tr class="required-row"><td>Scope</td><td>Required</td><td>Defines what is included.</td></tr>
+      <tr class="required-row"><td>Non-Goals</td><td>Required</td><td>Defines what must not be built.</td></tr>
+      <tr class="required-row"><td>Users / Actors</td><td>Required</td><td>Defines people, systems, and services involved.</td></tr>
+      <tr class="required-row"><td>Inputs</td><td>Required</td><td>Defines data received by the feature.</td></tr>
+      <tr class="required-row"><td>Outputs</td><td>Required</td><td>Defines data, UI changes, events, or files produced by the feature.</td></tr>
+      <tr class="required-row"><td>Data Model</td><td>Required</td><td>Defines entities, fields, relationships, and examples.</td></tr>
+      <tr><td>UI Components</td><td>Conditional</td><td>Required when the feature has a user interface.</td></tr>
+      <tr class="required-row"><td>Workflow</td><td>Required</td><td>Defines the main step-by-step process.</td></tr>
+      <tr class="required-row"><td>Behavior Rules</td><td>Required</td><td>Defines business logic and system behavior.</td></tr>
+      <tr class="required-row"><td>Validation Rules</td><td>Required</td><td>Defines valid and invalid data.</td></tr>
+      <tr class="required-row"><td>Error Handling</td><td>Required</td><td>Defines failure behavior and user-facing messages.</td></tr>
+      <tr class="required-row"><td>Security Rules</td><td>Required</td><td>Defines access, privacy, prompt safety, and rendering safety.</td></tr>
+      <tr class="required-row"><td>Constraints</td><td>Required</td><td>Defines technical, platform, product, and performance limits.</td></tr>
+      <tr class="required-row"><td>Acceptance Criteria</td><td>Required</td><td>Defines completion conditions.</td></tr>
+      <tr class="required-row"><td>Test Cases</td><td>Required</td><td>Defines verifiable test scenarios.</td></tr>
+      <tr><td>Implementation Notes</td><td>Optional</td><td>Provides architecture or coding guidance.</td></tr>
+      <tr><td>Open Questions</td><td>Optional</td><td>Tracks unresolved decisions.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+        <section id="template">
+          <h2>5. Generic SNL Feature Spec Template</h2>
+          <pre><code># SNL Spec: [Feature Name]
+
+## 1. Goal
+
+## 2. Background / Context
+
+## 3. Scope
+
+## 4. Non-Goals
+
+## 5. Users / Actors
+
+## 6. Inputs
+
+## 7. Outputs
+
+## 8. Data Model
+
+## 9. UI Components
+
+## 10. Workflow
+
+## 11. Behavior Rules
+
+## 12. Validation Rules
+
+## 13. Error Handling
+
+## 14. Security Rules
+
+## 15. Constraints
+
+## 16. Acceptance Criteria
+
+## 17. Test Cases
+
+## 18. Implementation Notes
+
+## 19. Open Questions</code></pre>
+        </section>
+
+        <section id="sections">
+          <h2>6. Section Definitions</h2>
+
+          <h3>1. Goal</h3>
+          <p>Defines the outcome of the feature. It should explain what is being built, who benefits, and what problem it solves.</p>
+          <pre><code>## 1. Goal
+Build clickable course topic cards for the Alex Menu App. When a user clicks a topic card, the app converts the click into a natural-language question and sends it to the AI chat interface.</code></pre>
+
+          <h3>2. Background / Context</h3>
+          <p>Explains the product or business context. This helps the LLM understand intent, not just mechanics.</p>
+
+          <h3>3. Scope</h3>
+          <p>Defines what is included. Use numbered items so each scope item can be mapped to implementation tasks.</p>
+
+          <h3>4. Non-Goals</h3>
+          <p>Defines what is excluded. This prevents the LLM or development team from adding features that were not requested.</p>
+
+          <h3>5. Users / Actors</h3>
+          <p>Defines human users, system services, external services, and background processes involved in the feature.</p>
+
+          <h3>6. Inputs</h3>
+          <p>Defines every piece of data the feature receives.</p>
+          <pre><code>| Input | Type | Required | Source | Description |
+|---|---|---:|---|---|
+| menu_id | string | yes | UI state | Active menu |
+| course_id | string | yes | UI state | Active course |
+| topic_id | string | yes | user click | Clicked topic card |</code></pre>
+
+          <h3>8. Outputs</h3>
+          <p>Defines what the feature produces: UI changes, records, API responses, files, analytics events, logs, or generated content.</p>
+
+          <h3>9. Data Model</h3>
+          <p>Defines entities, fields, required status, relationships, and examples. This is one of the most important sections for code generation.</p>
+
+          <h3>10. UI Components</h3>
+          <p>Required only if the feature has UI. Define component responsibility, display rules, loading states, disabled states, and empty states.</p>
+
+          <h3>11. Workflow</h3>
+          <p>Defines the main step-by-step path. Each workflow should be written as a numbered sequence.</p>
+
+          <h3>12. Behavior Rules</h3>
+          <p>Defines exact business logic. Use IDs such as <code>BR-001</code>, <code>BR-002</code>.</p>
+          <pre><code>BR-001: Topic cards must only appear after a course is selected.
+BR-002: A topic click must produce a natural-language question.
+BR-003: The generated question must be submitted through the same chat flow as a typed question.</code></pre>
+
+          <h3>13. Validation Rules</h3>
+          <p>Defines what data is valid. Use IDs such as <code>VR-001</code>.</p>
+
+          <h3>14. Error Handling</h3>
+          <p>Defines what happens when data is missing, requests fail, services time out, or results are empty.</p>
+
+          <h3>15. Security Rules</h3>
+          <p>Defines access control, prompt safety, injection protection, rendering safety, and logging restrictions.</p>
+
+          <h3>16. Constraints</h3>
+          <p>Defines technical, platform, product, performance, and architectural limits.</p>
+
+          <h3>17. Acceptance Criteria</h3>
+          <p>Defines completion conditions. Use <strong>Given / When / Then</strong> when possible.</p>
+
+          <h3>18. Test Cases</h3>
+          <p>Defines concrete test scenarios with preconditions, steps, and expected results.</p>
+
+          <h3>19. Implementation Notes</h3>
+          <p>Optional architecture or coding guidance. This section should guide the implementation without hiding important requirements.</p>
+
+          <h3>20. Open Questions</h3>
+          <p>Tracks unresolved decisions. Open questions should not block implementation unless explicitly marked as blocking.</p>
+        </section>
+
+        <section id="example" class="page-break">
+          <h2>6. Full Example: Alex Menu App Topic Card Feature</h2>
+
+          <h3>SNL Spec: Course Topic Cards for Alex Menu App</h3>
+
+          <h4>1. Goal</h4>
+          <p>Build clickable course topic cards for the Alex Menu App. When a user selects a course, the app displays topic cards such as Story, Ingredients, How to Cook, Flavor, Customization, and Dietary Notes. When the user clicks a topic card, the system converts the click into a natural-language question and sends it to the AI chat interface.</p>
+
+          <h4>2. Background / Context</h4>
+          <p>Alex creates special set menus for family and friends. Each menu has 7 to 12 courses and is designed for an occasion such as a birthday, anniversary, or holiday. Each course has its own story, ingredients, cooking method, flavor, and personal meaning. The app should support both typed questions and topic-based exploration.</p>
+
+          <h4>3. Scope</h4>
+          <ol>
+            <li>Display topic cards for a selected course.</li>
+            <li>Generate a question from a clicked topic card.</li>
+            <li>Submit the generated question to the chat interface.</li>
+            <li>Pass menu and course context to the AI backend.</li>
+            <li>Display the AI response in the chat.</li>
+            <li>Log the topic click event.</li>
+          </ol>
+
+          <h4>4. Non-Goals</h4>
+          <ol>
+            <li>Menu editing.</li>
+            <li>Course editing.</li>
+            <li>User login.</li>
+            <li>Payment features.</li>
+            <li>Voice input.</li>
+            <li>Admin dashboard.</li>
+            <li>Automatic menu generation.</li>
+            <li>Multi-language support in version 1.</li>
+          </ol>
+
+          <h4>5. Users / Actors</h4>
+          <table>
+            <tr><th>Actor</th><th>Description</th></tr>
+            <tr><td>Guest User</td><td>A person using the app to explore Alex's menu.</td></tr>
+            <tr><td>Chat Interface</td><td>The frontend component that displays user and assistant messages.</td></tr>
+            <tr><td>AI Agent Backend</td><td>The backend service that receives the question and returns an answer.</td></tr>
+            <tr><td>Menu Content Store</td><td>The published JSON content source for menu, course, topic, and card data.</td></tr>
+          </table>
+
+          <h4>6. Inputs</h4>
+          <table>
+            <tr><th>Input</th><th>Type</th><th>Required</th><th>Source</th><th>Description</th></tr>
+            <tr><td>menu_id</td><td>string</td><td>yes</td><td>UI state</td><td>Active menu.</td></tr>
+            <tr><td>course_id</td><td>string</td><td>yes</td><td>UI state</td><td>Active course.</td></tr>
+            <tr><td>topic_id</td><td>string</td><td>yes</td><td>user click</td><td>Clicked topic card.</td></tr>
+            <tr><td>session_id</td><td>string</td><td>yes</td><td>app runtime</td><td>Current chat session.</td></tr>
+            <tr><td>question_template</td><td>string</td><td>yes</td><td>topic data</td><td>Template for generated question.</td></tr>
+          </table>
+
+          <h4>7. Outputs</h4>
+          <table>
+            <tr><th>Output</th><th>Type</th><th>Destination</th><th>Description</th></tr>
+            <tr><td>generated_question</td><td>string</td><td>chat interface</td><td>Question created from topic click.</td></tr>
+            <tr><td>chat_message</td><td>object</td><td>chat history</td><td>User-style message.</td></tr>
+            <tr><td>ai_response</td><td>object</td><td>chat panel</td><td>AI-generated answer.</td></tr>
+            <tr><td>analytics_event</td><td>object</td><td>analytics log</td><td>Topic click event.</td></tr>
+          </table>
+
+          <h4>8. Data Model</h4>
+          <h3>Entity: TopicCard</h3>
+          <table>
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>topic_id</td><td>string</td><td>yes</td><td>Unique topic ID.</td></tr>
+            <tr><td>course_id</td><td>string</td><td>yes</td><td>Parent course.</td></tr>
+            <tr><td>label</td><td>string</td><td>yes</td><td>Display label.</td></tr>
+            <tr><td>question_template</td><td>string</td><td>yes</td><td>Question template.</td></tr>
+            <tr><td>display_order</td><td>integer</td><td>yes</td><td>Display order.</td></tr>
+            <tr><td>icon</td><td>string</td><td>no</td><td>Optional icon name.</td></tr>
+          </table>
+          <pre><code>{
+  "topic_id": "topic_story",
+  "course_id": "course_006",
+  "label": "Story",
+  "question_template": "What is the story behind {course_title}?",
+  "display_order": 1,
+  "icon": "book-open"
+}</code></pre>
+
+          <h4>9. UI Components</h4>
+          <p><strong>CourseTopicCardList</strong> displays topic cards for the active course. It must show only topics for the selected course, sort by display_order, disable clicks while an AI response is loading, and hide the section if no topic cards exist.</p>
+          <p><strong>ChatPanel</strong> displays generated questions and AI responses. A topic-generated question must appear as a user message, and the AI response must appear as an assistant message.</p>
+
+          <h4>10. Workflow</h4>
+          <ol>
+            <li>User opens the Alex Menu App.</li>
+            <li>User selects a menu.</li>
+            <li>System displays courses.</li>
+            <li>User selects a course.</li>
+            <li>System loads topic cards for the selected course.</li>
+            <li>User clicks a topic card.</li>
+            <li>System validates menu_id, course_id, and topic_id.</li>
+            <li>System generates a question using question_template.</li>
+            <li>System inserts generated question into chat as a user message.</li>
+            <li>System sends the question to the AI backend.</li>
+            <li>Backend retrieves selected course context.</li>
+            <li>Backend generates answer.</li>
+            <li>Frontend displays answer.</li>
+            <li>System logs topic click event.</li>
+          </ol>
+
+          <h4>11. Behavior Rules</h4>
+          <ul>
+            <li><strong>BR-001:</strong> Topic cards must only appear after a course is selected.</li>
+            <li><strong>BR-002:</strong> Topic cards must be sorted by display_order.</li>
+            <li><strong>BR-003:</strong> A topic click must produce a natural-language question.</li>
+            <li><strong>BR-004:</strong> The generated question must include the selected course title.</li>
+            <li><strong>BR-005:</strong> The generated question must be submitted through the same chat flow as a typed question.</li>
+            <li><strong>BR-006:</strong> The AI backend must receive menu_id, course_id, topic_id, session_id, and generated_question.</li>
+            <li><strong>BR-007:</strong> The AI response must prioritize content from the selected course.</li>
+            <li><strong>BR-008:</strong> If the user continues the conversation, the course context should remain active unless changed.</li>
+            <li><strong>BR-009:</strong> The system must not expose internal metadata, prompts, or embedding text.</li>
+          </ul>
+
+          <h4>12. Validation Rules</h4>
+          <ul>
+            <li><strong>VR-001:</strong> menu_id is required.</li>
+            <li><strong>VR-002:</strong> course_id is required.</li>
+            <li><strong>VR-003:</strong> topic_id is required.</li>
+            <li><strong>VR-004:</strong> course_id must belong to menu_id.</li>
+            <li><strong>VR-005:</strong> topic_id must belong to course_id.</li>
+            <li><strong>VR-006:</strong> question_template cannot be empty.</li>
+            <li><strong>VR-007:</strong> generated_question must be between 5 and 500 characters.</li>
+          </ul>
+
+          <h4>13. Error Handling</h4>
+          <ul>
+            <li><strong>EH-001:</strong> If menu_id is missing, show “Please select a menu first.”</li>
+            <li><strong>EH-002:</strong> If course_id is missing, show “Please select a course first.”</li>
+            <li><strong>EH-003:</strong> If topic_id is invalid, show “This topic is not available for the selected course.”</li>
+            <li><strong>EH-004:</strong> If AI backend fails, show “Sorry, I could not answer that right now. Please try again.”</li>
+            <li><strong>EH-005:</strong> If request times out, stop loading and show retry option.</li>
+          </ul>
+
+          <h4>14. Security Rules</h4>
+          <ul>
+            <li><strong>SR-001:</strong> The backend must validate all IDs.</li>
+            <li><strong>SR-002:</strong> The client must not send or expose hidden system prompts.</li>
+            <li><strong>SR-003:</strong> Rendered chat content must be sanitized.</li>
+            <li><strong>SR-004:</strong> User input must be treated as untrusted.</li>
+            <li><strong>SR-005:</strong> The AI agent must not reveal hidden instructions or internal metadata.</li>
+          </ul>
+
+          <h4>15. Constraints</h4>
+          <ul>
+            <li><strong>C-001:</strong> Must work on mobile and desktop.</li>
+            <li><strong>C-002:</strong> Must work without login.</li>
+            <li><strong>C-003:</strong> Must use published menu JSON as the content source.</li>
+            <li><strong>C-004:</strong> Frontend must not access the vector database directly.</li>
+            <li><strong>C-005:</strong> Topic clicks should reuse the existing chat submission flow.</li>
+          </ul>
+
+          <h4>16. Acceptance Criteria</h4>
+          <ul>
+            <li><strong>AC-001:</strong> Given a course is selected, when the course view loads, then the topic cards for that course are displayed.</li>
+            <li><strong>AC-002:</strong> Given the user clicks the Story card, when the click is processed, then a generated question appears in the chat as a user message.</li>
+            <li><strong>AC-003:</strong> Given the generated question is submitted, when the backend returns an answer, then the answer appears in the chat panel.</li>
+            <li><strong>AC-004:</strong> Given an invalid topic_id is submitted, when validation runs, then the request is rejected and no AI answer is generated.</li>
+          </ul>
+
+          <h4>17. Test Cases</h4>
+          <h3>TC-001: Display Topic Cards</h3>
+          <p><strong>Preconditions:</strong> Menu exists. Course exists. Course has topic cards.</p>
+          <p><strong>Steps:</strong> Select the menu. Select the course.</p>
+          <p><strong>Expected Result:</strong> Topic cards appear in display_order.</p>
+
+          <h3>TC-002: Click Ingredients Topic</h3>
+          <p><strong>Preconditions:</strong> Course is selected. Ingredients topic exists.</p>
+          <p><strong>Steps:</strong> Click Ingredients.</p>
+          <p><strong>Expected Result:</strong> Chat shows a generated user question about the course ingredients. AI response answers using the selected course context.</p>
+
+          <h3>TC-003: Backend Failure</h3>
+          <p><strong>Preconditions:</strong> AI backend is unavailable.</p>
+          <p><strong>Steps:</strong> Click any topic card.</p>
+          <p><strong>Expected Result:</strong> Loading state stops. Friendly error message appears. Error is logged.</p>
+
+          <h4>18. Implementation Notes</h4>
+          <ol>
+            <li>Topic click should call the existing chat submit function.</li>
+            <li>Generated questions may be created on the frontend for simple templates.</li>
+            <li>Backend must still validate the topic and course relationship.</li>
+            <li>In the future, topic cards should be editable in the KB editor.</li>
+            <li>Analytics should track menu_id, course_id, topic_id, and timestamp.</li>
+          </ol>
+
+          <h4>19. Open Questions</h4>
+          <ul>
+            <li><strong>OQ-001:</strong> Should topic question templates support multiple languages?</li>
+            <li><strong>OQ-002:</strong> Should topic cards be globally defined or course-specific?</li>
+            <li><strong>OQ-003:</strong> Should analytics track whether the user continues the conversation after a topic click?</li>
+          </ul>
+        </section>
+
+        <section id="quality">
+          <h2>7. SNL Quality Checklist</h2>
+          <div class="rule"><strong>Architect rule:</strong> Do not write what the system should generally do. Write what the system must do, must not do, and what happens when something goes wrong.</div>
+          <ul>
+            <li>Does the spec clearly define the feature goal?</li>
+            <li>Are scope and non-goals both included?</li>
+            <li>Are all inputs and outputs defined?</li>
+            <li>Are entities and fields defined with types?</li>
+            <li>Are workflow steps clear and sequential?</li>
+            <li>Are behavior rules numbered and testable?</li>
+            <li>Are validation, error handling, and security rules included?</li>
+            <li>Are acceptance criteria written in verifiable language?</li>
+            <li>Are test cases concrete enough for QA or automated testing?</li>
+            <li>Are open questions separated from decided requirements?</li>
+          </ul>
+        </section>
+
+        <section id="workflow">
+          <h2>8. Recommended SNL Workflow</h2>
+          <ol>
+            <li>Write the initial SNL spec in Markdown.</li>
+            <li>Review it as a solution architect.</li>
+            <li>Ask the LLM to identify ambiguity, missing data, edge cases, and hidden assumptions.</li>
+            <li>Revise the SNL spec until it is testable.</li>
+            <li>Generate implementation plan from the SNL spec.</li>
+            <li>Generate code module by module.</li>
+            <li>Generate tests from acceptance criteria and test cases.</li>
+            <li>Keep the SNL spec as the source of truth for future changes.</li>
+          </ol>
+        </section>
+      </article>
+    </main>
+
+
+
+  </div>
+
+        <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container py-4">
+    <div class="copyright">
+      &copy; 2025 Copyright <strong><span>i80Solutions</span></strong>. All Rights Reserved
+  </div>
+    </div>
+  </footer><!-- End Footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>i80Solutions | AI Agents, Structured Knowledge & Research by Alex P. Wang</title>
+
+  <meta name="description" content="i80Solutions explores AI Agents, private domain knowledge systems, Structured Natural Language (SNL), Retrieval-Augmented Generation (RAG), and the future of software engineering. Research papers, technical articles, and reflections by Alex P. Wang.">
+
+  <meta name="keywords" content="AI Agents, Structured Natural Language, SNL, RAG, Retrieval Augmented Generation, Private Domain AI, Knowledge Base, Vector Database, Embeddings, AI Product Architect, Software Engineering, AI Research, Agent Architecture, Alex P. Wang, i80Solutions">
+
+  <meta name="author" content="Alex P. Wang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="i80Solutions | AI Agents, Structured Knowledge & Research">
+  <meta property="og:description" content="Exploring AI Agents, Structured Natural Language, private domain knowledge systems, and the future of software engineering.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://i80.com">
+  <meta property="og:image" content="https://i80.com/images/i80d.png">
+  <meta property="og:site_name" content="i80Solutions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="i80Solutions | AI Agents, Structured Knowledge & Research">
+  <meta name="twitter:description" content="AI Agents, Structured Natural Language, private knowledge systems, research papers, and reflections by Alex P. Wang.">
+  <meta name="twitter:image" content="https://i80.com/images/i80d.png">
+
+  <!-- Favicons -->
+  <!-- <link href="./lib/img/favicon.png" rel="icon"> -->
+  <link href="./lib/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Vendor CSS Files -->
+  <link href="./lib/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./lib/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./lib/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./lib/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./lib/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="./lib/css/style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <style>
+    .logo,
+    .logo a,
+    .logo span {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LNXXD8W59"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1LNXXD8W59');
+  </script>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">i80<span>Solutions</span>.</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <!-- <li><a class="nav-link scrollto active" href="./login.php">Home</a></li> -->
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#how">How It Works</a></li>
+          <li><a class="nav-link scrollto" href="#research">Research & Reflections</a></li>
+          <li><a class="nav-link scrollto" href="#collaborate">Collaborate</a></li>
+      
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <main id="main">
+
+  
+    <!-- ======= About Section ======= -->
+     <!-- With Drak Background color -->
+    <section id="about" class="about section-intro"> 
+
+
+  <div class="container">
+    <h2 class="mb-4">My Road to i80: Building AI Agents That Know Their Domain</h2>
+    <div class="section-title" data-aos="fade-up" data-aos-delay="100">
+      <img src="./images/i80d.png" alt="i80 metaphor for AI" class="img-fluid" style="border-radius:5px; width: 100%; height: auto; max-height: 25vh; object-fit: cover;">
+    </div>
+    <h5 class="mb-2">The Spark</h5>
+    <p>I love to cook. Not by the book, but with intuition, memory, and whatever ingredients are at hand. Over the years, I've built a rich personal archive: dishes invented on the fly, surprising flavor combinations, and moments of improvisation captured in photos, notes, and conversations.</p>
+
+    <p>
+      Then, in January 2023, I encountered ChatGPT. I was blown away by its ability to answer questions and generate ideas. I'd ask about cuisines, techniques, or flavor pairings, and the responses were impressive. But when I asked, <i>"What did I cook that night with salmon and miso?"</i>, the reply came through as: <i>"I don't have access to your personal cooking history."</i>  For all their brilliance, these large language models (LLMs) didn't know my stories. They couldn't access the unique experiences, preferences, and memories that make me who I am.
+    </p>
+    <h5 class="mt-4 mb-2">The Turning Point</h5>
+    <p>That's when it hit me: What if I could build an AI that feels like an LLM but knows what I know? Not a generic model trained on the internet, but a personal system capturing my cooking stories, my thought processes, my unique way of seeing the world. I imagined an AI that could answer, <i>"What would I have cooked with those ingredients?"</i> or even <i>"How would I have approached that problem?"</i> - not based on generic data, but on my own lived experience.</p>
+
+    <p>This led me to the idea of a domain-aware AI Agent - not just a chatbot, but a system that can understand a question, search trusted knowledge, decide how to respond, and stay grounded in the right context. Underneath, it may use retrieval, embeddings, orchestration, and LLMs. But the goal is easier to understand: build an AI Agent that knows a specific world deeply. I started with a personal knowledge base - not of recipes, but of my cooking stories, complete with ingredients, intentions, and moments of inspiration. This agent wouldn't just recite facts; it would reflect my style, my creativity, and my voice.</p>
+
+
+    <p>  That's also where the name "i80" comes from - inspired by the interstate highway built for clarity, structure, and speed. Just like that road, this system is meant to navigate complexity with confidence. No guesswork. No detours. Just grounded, context-aware answers that get you where you need to go.</p>
+    
+    <p>My vision goes beyond cooking. It's about creating an AI that acts like an extension of myself - one that preserves my memories and thought patterns for future reflection, or for others to access my perspective. It's a step toward digital continuity, a way to keep my perspective alive. And this approach isn't just personal. 
+      The same technology can empower organizations - like hotel guest services, HR help desks, new employee onboarding assistants and many others - where public LLMs fall short due to a lack of domain-specific, trustworthy knowledge.</p>
+    
+    <h5 class="mt-4 mb-2">The Challenge Ahead</h5>
+    <p>Building an AI Agent that knows a person, a business, or a domain is no small task. It requires blending the expressive power of LLMs with curated knowledge, reliable retrieval, careful orchestration, and clear boundaries. But that's the road I'm on: a path to an AI that doesn't just answer, but remembers, reasons, acts, reflects, and resonates.</p>
+    
+    <p>
+
+      I don't know how far I'll go, or exactly what the final destination might look like. But that's part of the journey. What started as a spark - an idea to build an AI that truly understands me - has become a deeply personal exploration of memory, language, and technology.
+    </p>
+    <p>
+      <h5 class="mt-4 mb-2">A Living Journal</h5>
+      This website will document my road to i80. Through this space, I'll share what I'm learning along the way - the breakthroughs and the dead ends, the tools and techniques, the insights that emerge when <i>intuition meets iteration</i>.
+      Whether it leads to a fully functioning personal AI Agent, a new kind of storytelling engine, trusted domain agents for businesses, or something I haven't imagined yet, I'm here to explore it - and you're welcome to follow along.
+
+    </p>
+    
+    <p>
+      -  Alex P. Wang<br>
+      <small>October 28, 2024</small>
+     </p>
+
+
+
+      </div>
+    </section><!-- End Section -->
+
+    <section id="started" class="py-5 bg-light text-dark">
+      <div class="container">
+        <h2 >How I Got Started</h2>
+    
+        <p>
+          <img src="./images/person1s.png" alt="How I Got Started " style="float: right; width: 350px; margin-left: 20px; margin-bottom: 10px; border-radius: 3px;">
+          I jumped in after the idea struck me - despite not knowing much about large language models. 
+          Back in graduate school, I studied expert systems, AI, and neural networks, but LLMs were a whole new world. 
+          I knew I'd need Python, but at that point, I hadn't written a single line of it.
+        </p>
+    
+        <p>
+          Thankfully, there's an abundance of resources online - and even better, we now have LLMs to help along the way. 
+          It didn't take long for me to set up my initial Python environment using VS Code. And just like that, I was on my way.
+          <a href="py_setup.html"> (Set Up Your Python App Environment)</a>
+        </p>
+    
+        <p>
+          At first, I tried downloading open-source LLMs and fine-tuning them with my own knowledge base. 
+          That quickly turned into a dead end. Fine-tuning is resource-intensive, hard to iterate, and - most importantly -
+          poorly suited for domain knowledge that changes frequently or needs precise control. 
+          It simply wasn't the right tool for a task where accuracy, flexibility, and explainability matter.
+          Eventually, I came across retrieval, embeddings, and knowledge-grounded generation. That opened the door to something broader: building AI Agents that can use trusted knowledge, make decisions, and respond with context.
+        </p>
+    
+      </div>
+    </section>
+    
+
+
+    <section id="how" class="py-5 bg-white text-dark">
+      <div class="container">
+        <h2 >How an AI Agent Works</h2>
+
+<p>
+Not all AI agents are the same.
+Some agents execute tasks like booking meetings or sending emails.
+Some automate workflows across systems.
+Some operate autonomously with minimal human input.
+</p>
+
+<p>
+The agents I focus on are domain-specific AI Agents — agents powered by trusted private knowledge.
+These agents are designed to answer accurately, reason within a specific domain, and stay grounded in real business knowledge rather than generic internet knowledge.
+</p>
+
+<p>
+Examples include hotel guest assistants, onboarding assistants, internal support agents, and personal knowledge agents built from cooking stories, memories, and lived experience.
+</p>
+
+
+        <p>
+          I think the best way to explain how this AI Agent works is with an analogy - how a human answers a question and decides what to do next.
+          
+        </p>
+        <p>
+          Imagine you're answering a question from your friend. First, you think back through your <strong>memory</strong> to find anything relevant - that's <strong>retrieval</strong>. Then, based on what you remember, your <strong>brain</strong> put the answer together in your own words - that's <strong>generation</strong>.
+        </p>
+        <p>That is essentially what a trusted domain-specific AI Agent does. It has a curated <strong>knowledge base</strong> (its memory). The <strong>retriever</strong> pulls in the most relevant information. The <strong>orchestrator</strong> - like your brain - decides how to respond: answer directly, ask for clarification, call on an LLM, or eventually trigger an action through an API or workflow.
+        </p>
+   
+        <ul>
+          <li><strong>Curate a knowledge base (memory)</strong> - Use your private, domain-specific content - facts, stories, documentation - to build a structured foundation.</li>
+          <li><strong>Retrieve relevant content (retrieval)</strong> - When a question is asked, the retriever searches the knowledge base for snippets that are semantically related and have high similarity scores.</li>
+          <li><strong>Orchestrate a response or action (brain)</strong>:
+            <ul>
+              <li>If the similarity score is high and the answer is straightforward, it returns the response directly.</li>
+              <li>If the similarity is lower or the question is more nuanced, it sends the retrieved content to the LLM - along with clear instructions to stay grounded in the facts and avoid hallucination.</li>
+              <li>If the task requires action, the agent can route the request to a defined workflow, API, or human handoff.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mt-4">
+          The result is an AI Agent that behaves more like a well-informed assistant: thoughtful, relevant, context-aware, and capable of moving from answers toward action.
+        </p>
+      </div>
+
+    </section>
+
+
+
+    <section id="building_blocks" class="pt-5 pb-5 bg-light">
+      <div class="container">
+        <div>
+          <h2>Key Building Blocks of an AI Agent</h2>
+          <p>
+            It didn't take me long to piece together the basic building blocks and get things up and running. At the heart of what I built is a modular agent system - one that reflects how we, as humans, remember, reason, and respond. I set up a curated <strong>knowledge base</strong> to serve as memory. 
+            A <strong>retriever</strong> fetches the most relevant information based on your question. 
+            An <strong>orchestrator</strong> decides whether to respond directly, synthesize information from multiple sources, call on an <strong>LLM</strong>, or route the request toward an action.
+          </p>
+          <p>
+            Once I had these core parts working together, things really started to click. The setup gave me a solid foundation to start experimenting - exactly the kind of system I had envisioned from the very beginning.
+          </p>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+              <div class="card-body">
+                <div class="icon mb-3" style="font-size: 2rem; color:rgb(22, 52, 85);">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <h5 class="card-title">Knowledge Base</h5>
+                <p class="mt-3">A structured memory system built from your content. Text is transformed into semantic vectors and stored in a vector database for fast, meaningful retrieval.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+              <div class="card-body">
+                <div class="icon mb-3" style="font-size: 2rem; color:rgb(22, 52, 85);">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+                <h5 class="card-title">Retriever</h5>
+                <p class=" mt-3">Finds the most relevant entries from the knowledge base by comparing the question to stored vectors using similarity scores.</p>
+              </div>
+            </div>
+          </div>
+
+            
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+              <div class="card-body">
+                <div class="icon mb-3" style="font-size: 2rem; color:rgb(22, 52, 85);">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h5 class="card-title">Orchestrator</h5>
+                <p class="mt-3">Decides how the agent should respond - return trusted content directly, ask for clarification, invoke the LLM, or route the request to a defined action.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100 text-center">
+              <div class="card-body">
+                <div class="icon mb-3" style="font-size: 2rem; color:rgb(22, 52, 85);">
+                  <i class="fa-solid fa-language"></i>
+                </div>
+                <h5 class="card-title">LLM </h5>
+                <p class=" mt-3">Produces natural-language answers using retrieved context, instructions, and boundaries so the agent can respond clearly and accurately.</p>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+
+
+      <section id="challenges" class="services ">
+        <div class="container" data-aos="fade-up">
+  
+          <h2>Key Challenges in Building Trusted AI Agents</h2>
+
+          <p>
+            The concept sounded simple - until I actually started building and testing my first domain-aware agent.
+          
+            One of the first things I had to understand was how the system makes sense of conversational language. It does this through a technique called <em>embeddings</em>. In simple terms, embeddings convert text into numbers (technically, vectors) - representations that capture meaning, not just literal words. This allows the system to compare concepts and retrieve content that's semantically relevant to the question being asked, even when the wording or language differs.
+          </p>
+          
+          <p>
+            With that foundation in place, a new challenge emerged: what content should I embed? At first, I followed the conventional method of breaking documents into evenly sized chunks. But in practice, this approach often missed the essence of what users were really asking. What turned out to be far more effective - especially in a focused domain - was creating <em>query-focused embeddings</em> that align more closely with the actual questions people tend to ask. That shift significantly improved the system's performance and reliability.
+          
+            It laid the foundation for my solution. Of course, embeddings are just one part of the puzzle - many other challenges still remain.
+          </p>
+
+
+  
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon-box service-item  bg-light" style="border-radius: 5px";>
+     
+                <h5>Embedding Quality</h5>
+                <p>Poor or inconsistent embedding quality due to vague text, evolving language, or model drift. Embedding mismatches lead to retrieval errors - especially over time</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch  mt-4 mt-lg-0 " data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box service-item  bg-light" style="border-radius: 5px";>
+
+                <h5>Query Understanding</h5>
+                <p>Interpreting vague or conversational questions - especially when context is implied or missing. Handling multi-turn conversations or follow-ups that reference previous questions or answers</p>
+              </div>
+            </div>
+  
+
+
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon-box service-item bg-light" style="border-radius: 5px;">
+   
+                <h5>Retrieval Accuracy</h5>
+                <p>Ensuring the right pieces of information are found, ranked by relevance, and passed correctly to the language model.</p>
+              </div>
+            </div>
+
+    <p>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon-box service-item  bg-light" style="border-radius: 5px";>
+     
+                <h5>Knowledge Base Coverage</h5>
+                <p>Capturing enough structured, relevant knowledge to confidently answer the real-world questions users actually ask. Keeping the knowledge base up to date, pruning outdated info.</p>
+              </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon-box service-item  bg-light" style="border-radius: 5px";>
+     
+                <h5>Multilingual Support</h5>
+                <p>Accurately retrieving and generating across multiple languages. Embeddings and language models trained in one language often degrade in performance with others.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon-box service-item  bg-light" style="border-radius: 5px";>
+     
+                <h5>Hallucination Control</h5>
+                <p>Making sure the model generates responses based only on trusted knowledge, avoiding plausible-sounding fabrications.</p>
+              </div>
+            </div>
+
+  
+  
+          </div>
+       
+        </div>
+      </section><!-- End challenges Section -->
+      <p></p>
+
+      <section id="research" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="mb-4">Research & Reflections</h2>
+          <p >
+            Based on the challenges I've encountered while building private-domain AI Agents - from query understanding and embedding design to orchestration, confidence routing, and agent actions - I've identified several areas that deserve deeper exploration.
+
+            This section is where I document that journey.  It is  a place for papers, practical articles, technical notes, product thinking, and reflections on current AI progress.
+            
+            Some pieces will be formal and evidence-driven, exploring core architectural questions such as retrieval strategies, embedding methods, confidence routing, and how private knowledge systems perform across different domains.
+            
+            Others will be shorter observations from building real systems, responding to new AI developments, or thinking through how agents may change software, knowledge work, and personal memory.
+    
+            All of this is a work in progress - continuously updated as I discover new ideas, run new experiments, and refine the path forward.
+          </p>
+    
+      
+          <!-- Articles and Reflections Section -->
+          <h4 class="mt-5 mb-3">Articles & Reflections</h4>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+
+            <div class="col">
+  <div class="card h-100 d-flex flex-column shadow-sm">
+    <div class="card-body small d-flex flex-column">
+      <h5 class="card-title">The Last Line of Code</h5>
+      <p class="text-muted small mb-2">April 3, 2026</p>
+      <p class="card-text">
+        After two years of working with AI tools and large language models, one thing has become increasingly clear: software engineering is entering its next major transition. This article explores the shift from writing code to designing intent—where engineers move beyond implementation and become AI Product Architects, defining systems through structured natural language and precise specifications.
+      </p>
+      <div class="mt-auto">
+        <a href="doc/last_line_of_code.html" class="btn btn-sm btn-outline-primary mt-3" target="new">Read</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Selecting the Best Embedding Method for Limited Domain Knowledge</h5>
+                        <p class="text-muted small mb-2">May 21, 2025</p>
+                  <p class="card-text">This article compares chunk-based and query-focused embedding strategies for private-domain AI Agents in limited-domain settings. It outlines 15 chunking methods and highlights why query-based embedding offers greater precision and efficiency for structured knowledge bases.
+                  </p>
+                  <div class="mt-auto">
+                    
+                    <a href="doc/a_embedding_methods.html" class="btn btn-sm btn-outline-primary mt-3" target="new">Read</a>
+    
+                 </div>
+                </div>
+              </div>
+            </div>
+      <!--
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Embedding with Targeted Language: Enhancing Intent Matching in Multilingual AI Agent Systems</h5>
+                  <p class="card-text">This article explores techniques for improving intent matching in multilingual AI Agent systems by embedding content in the user's native language. It demonstrates how targeted-language embeddings increase retrieval accuracy across English, Chinese, and bilingual queries.</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                      Draft in Progress
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Learning from Queries: Automating Intent Expansion in AI Agent Systems</h5>
+                  <p class="card-text">This study proposes a method for using real user queries to discover new intents and improve agent coverage. It outlines a feedback loop where unmatched or ambiguous queries are clustered and used to suggest new embedding entries.</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                      Draft in Progress
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Precision Routing in Hybrid AI Agents: Balancing Retrieval, Generation, Action, and Escalation</h5>
+                  <p class="card-text">This article introduces a hybrid AI Agent architecture that routes queries to retrieval, generation, or escalation paths based on confidence and intent type. It aims to optimize system performance and user trust in private-domain assistants.</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                      Draft in Progress
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Calibrating Confidence in AI Agents: Threshold Tuning for Trustworthy Retrieval and Routing</h5>
+                  <p class="card-text">This article investigates how to set and tune similarity thresholds in AI Agent systems to avoid hallucinations and misrouting. It provides practical guidelines for confidence-based decision making in domain-constrained environments.</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                      Draft in Progress
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Beyond Retrieval: Integrating Knowledge, APIs, and Agent Actions in Private Domains</h5>
+                  <p class="card-text">This article explores how knowledge-grounded AI Agents can trigger API calls or structured workflows. It demonstrates how retrieval results can serve as the decision layer in structured action pipelines for hotel, service, or task automation.</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                      Draft in Progress
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+-->
+            <!-- Add more article cards here -->
+          </div>
+
+     <!-- Research Papers Section -->
+          <h4 class="mt-5 mb-3">Papers</h4>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Enhancing Query Retrieval Precision Through Optimized Embedding Text Selection</h5>
+                        <p class="text-muted small mb-2">Nov 16, 2024</p>
+                        
+                  <p class="card-text">This paper analyzes how embedding construction affects semantic search precision in private-domain applications. It evaluates normalization, synonyms, typo handling, and conversational phrasing using text-embedding-3-large and ChromaDB, providing evidence-backed recommendations to improve retrieval accuracy.</p>
+                  <div class="mt-auto">
+                  <a href="doc/p1.pdf" class="btn btn-sm btn-outline-primary mt-3">Read Paper</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <div class="card-body small d-flex flex-column">
+                  <h5 class="card-title">Optimizing Retrieval in Private Knowledge Agents: A Comparison of Query-Focused and Chunk-Based Embedding Strategies</h5>
+                  <p class="card-text">This paper compares query-focused embedding and chunk-based retrieval in private knowledge agent systems, using persoanl cooking stories. It evaluates precision, latency, and efficiency, showing how query-focused methods can improve accuracy and reduce overhead in structured, domain-specific AI Agent applications.
+                  </p>
+                  <div class="mt-auto">
+                  <button class="btn btn-sm btn-outline-secondary mt-3" disabled title="Coming Soon">
+                    Draft in Progress
+                  </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- Add more paper cards here -->
+
+        </div>
+
+          
+
+               
+
+          </div>
+      </section>
+      
+
+      <section id="collaborate" class="section-last">
+        <div class="container">
+          <h2 class="mb-4">Want to Collaborate?</h2>
+          
+  
+        <div class="container">
+  
+          <p>This is an ongoing personal research and building journey - not a finished product, but a path of discovery. There are many challenges ahead: from capturing intent to handling ambiguity, from structuring knowledge to routing actions and scaling across subjects within a domain. I'm approaching it step by step, using a divide-and-conquer mindset to explore, test, and refine. Is the end goal too ambitious? Perhaps. But I'm confident that I'll make progress, uncover interesting insights, and grow along the way.
+             <br><br>If you're working on similar problems or have ideas to share, I welcome collaboration and conversation. Let's learn from each other.
+          </p> <p>Want to collaborate or learn more?
+              <br>
+            Email me at <a href="mailto:alex@i80.com">alex@i80.com</a></p>
+          </div>
+      </section>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container py-4">
+    <div class="copyright">
+      &copy; 2025 Copyright <strong><span>i80Solutions</span></strong>. All Rights Reserved
+  </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./lib/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="./lib/vendor/aos/aos.js"></script>
+  <script src="./lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./lib/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./lib/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- <script src="./lib/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="./lib/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="./lib/vendor/waypoints/noframework.waypoints.js"></script> -->
+  <script src="./lib/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="./lib/js/main.js"></script>
+
+</body>
+
+</html>

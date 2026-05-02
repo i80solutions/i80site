@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python App Environment Setup</title>
+  <meta name="description" content="A practical setup note for creating a Python environment for early AI agent experiments.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LNXXD8W59"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1LNXXD8W59');
+  </script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span></a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section id="setup-guide" class="py-5 bg-white text-dark">
+      <div class="container">
+        <h2 class="mb-4">Set Up Your Python App Environment</h2>
+        <p class="mb-4">Follow these simple steps to get started with your Python application.</p>
+
+        <ol class="list-group list-group-numbered mb-5">
+            <li class="list-group-item">
+            <strong>Install Python (version 3.10 or later):</strong><br>
+            <ul>
+             <li>Go to the official website: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></li>
+            <li>Click the **“Download Python”** button for your operating system (Windows, macOS, or Linux).</li>
+            <li><strong>Important:</strong> On Windows, during installation, make sure to <span class="text-primary fw-bold">check the box that says “Add Python to PATH”</span> at the bottom of the setup window.</li>
+            <li>Then click **Install Now** and complete the setup.</li>
+            </ul>
+      
+            This ensures that you can use Python from the command line by simply typing <code>python</code>.
+            </li>
+
+       <li class="list-group-item">
+        <strong>Install Visual Studio Code (VS Code):</strong><br>
+        <ul>
+        <li>Download from <a href="https://code.visualstudio.com/" target="_blank">code.visualstudio.com</a></li>
+        <li>Launch VS Code after installing.</li>
+        <li>Go to the Extensions sidebar (or press <code>Ctrl+Shift+X</code>), search for <strong>Python</strong>, and install the extension by Microsoft.</li>
+        <li>Open your project folder in VS Code and select your Python interpreter (<code>.venv/bin/python</code> or <code>.venv\Scripts\python.exe</code>) via the Command Palette (<code>Ctrl+Shift+P</code> → “Python: Select Interpreter”).</li>
+        </ul>
+    </li>
+
+          <li class="list-group-item">
+            <strong>Create your project folder:</strong>
+            <pre class="mt-2"><code>mkdir my-app
+cd my-app</code></pre>
+          </li>
+
+          <li class="list-group-item">
+            <strong>Create a virtual environment:</strong>
+            <pre class="mt-2"><code>python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+.venv\\Scripts\\activate     # Windows</code></pre>
+          </li>
+
+          <li class="list-group-item">
+            <strong>Install essential packages:</strong>
+            <pre class="mt-2"><code>pip install openai langchain faiss-cpu tiktoken chromadb</code></pre>
+            Optional (for web app):
+            <pre><code>pip install flask flask-cors</code></pre>
+          </li>
+
+          <li class="list-group-item">
+            <strong>Create a <code>.env</code> file:</strong>
+            <pre class="mt-2"><code>OPENAI_API_KEY=your_openai_key_here</code></pre>
+          </li>
+
+      <li class="list-group-item">
+        <strong>Install and configure a vector database (ChromaDB):</strong><br>
+        <ul>
+          <li>ChromaDB is a lightweight and easy-to-use vector database for local or cloud storage.</li>
+          <li>Already included if you installed <code>chromadb</code> in step 5.</li>
+
+          <li>Use persistent storage to retain data between runs:
+            <pre><code>import chromadb
+client = chromadb.PersistentClient(path="./chroma-store")</code></pre>
+          </li>
+        </ul>
+      </li>
+
+  <li class="list-group-item">
+        <strong>Write your app logic (e.g. <code>app.py</code>):</strong><br>
+        You don't need to write everything from scratch. You can ask an LLM like ChatGPT or Copilot to generate the code for you — all you need is the right prompt.
+        <br><br>
+        Try this:
+        <div class="bg-light p-3 border rounded">
+          <code>
+            Write Python code that uses OpenAI API to embed a user query,<br>
+            search a ChromaDB vector store for the top 3 relevant documents,<br>
+            and then send those results back to GPT-3.5 to generate an answer.
+          </code>
+        </div>
+        <br>
+        This approach allows you to focus on what you want to build — not every syntax detail.
+      </li>
+
+          <li class="list-group-item">
+            <strong>Run your app:</strong>
+            <pre class="mt-2"><code>python app.py</code></pre>
+          </li>
+
+
+           <li class="list-group-item">
+        <strong>Organize your project structure:</strong><br>
+       Once you've tested your basic <code>app.py</code> and confirmed it works, it's time to think about organizing your project for long-term development. Before writing serious logic or sharing your work on GitHub, a clean folder structure will make your code easier to scale, maintain, and collaborate on.
+
+        <pre class="bg-light p-3 border rounded small"><code>
+my-app/
+├── app/
+│   ├── api/                  # API route controllers
+│   ├── config/               # config files, etc.
+│   ├── service/             # Core business logic, Emebddings, storage, LLMs
+│   ├── ui/                   # UI-facing logic and assets
+│   │   ├── static/           # JS/CSS/images
+│   │   ├── templates/        # HTML templates
+│   │   └── app_controller.py  # (UI controller)
+│   ├── util/                # Logger, file utils, etc.
+│   └── main.py               # ✅ App entry point
+│
+├── deploy/                   # AWS ECS, AppRunner, etc.
+├── logs/               # Log files
+├── test/                    # Pytest test suite
+├── .dockerignore
+├── .env                      # Environment config
+├── .gitignore
+├── Dockerfile                # For containerization
+├── README.md
+└── requirements.txt
+        </code></pre>
+        This layout helps keep your logic modular and production-ready.
+      </li>
+
+        </ol>
+
+
+
+        <div class="mt-5">
+          <a href="../index.html" class="btn btn-primary">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div>© 2026 i80Solutions. All Rights Reserved.</div>
+      <div><a class="footer-link" href="mailto:alex@i80.com">alex@i80.com</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

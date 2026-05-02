@@ -1,0 +1,386 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>i80agent — Build AI Agents That Know Your Domain</title>
+  <meta name="description" content="i80agent is a platform in progress for building domain-specific AI agents from private knowledge.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#platform">i80agent</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li>
+        <li class="nav-item"><a class="nav-link" href="#notes">Notes</a></li>
+        <li class="nav-item"><a class="nav-link" href="road-to-i80.html">My Road</a></li>
+        <li class="nav-item d-none"><a class="btn btn-primary ms-lg-2" href="mailto:alex@i80.com?subject=Request%20Early%20Access%20to%20i80agent">Request Early Access</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-8">
+        <span class="pill mb-3">i80agent is currently in active development</span>
+        <h1>Build AI Agents That Know Your <span class="text-accent">Domain</span></h1>
+        <p class="lead mt-4">
+          i80agent is a platform in progress for turning private knowledge into grounded,
+          domain-specific AI agents — agents that can answer accurately, reason within context,
+          and grow as your knowledge grows.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a class="btn btn-primary d-none" href="mailto:alex@i80.com?subject=Request%20Early%20Access%20to%20i80agent">Request Early Access</a>
+          <a class="btn btn-outline-dark" href="#how">See How It Works</a>
+        </div>
+        <p class="muted mt-4 mb-0">
+          Not fully self-serve yet. Today, new agents still require some manual setup.
+          The goal is to make knowledge-based agent creation accessible to anyone.
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-soft">
+          <h3>Private Knowledge → Trusted Agent</h3>
+          <p class="muted">
+            General LLMs know the internet. They do not know your business, your process,
+            your stories, or your domain unless that knowledge is collected, structured, and retrieved.
+          </p>
+          <div>
+            <span class="pill">Knowledge Base</span>
+            <span class="pill">Embeddings</span>
+            <span class="pill">Retrieval</span>
+            <span class="pill">Orchestration</span>
+            <span class="pill">LLM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="platform" class="section anchor-offset">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="section-kicker">The platform</div>
+        <h2 class="section-title">What is i80agent?</h2>
+      </div>
+      <div class="col-lg-7">
+        <p class="fs-5">
+          i80agent is a platform for building knowledge-based AI agents from private domain knowledge.
+          Users start with a focused knowledge base, keep adding knowledge over time, and create agents
+          that answer from trusted content instead of guessing.
+        </p>
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <div class="card-soft">
+              <h4>For personal knowledge</h4>
+              <p class="muted mb-0">Cooking stories, memories, notes, decisions, creative process, and lived experience.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-soft">
+              <h4>For business knowledge</h4>
+              <p class="muted mb-0">Hotel guest support, HR onboarding, internal help desks, product documentation, and service FAQs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card-soft">
+          <h3>Why not just ChatGPT?</h3>
+          <p class="muted mb-0">
+            LLMs are powerful, but without your private knowledge, they are incomplete.
+            i80agent is designed to ground answers in your own trusted content.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-soft">
+          <h3>Why domain-specific?</h3>
+          <p class="muted mb-0">
+            A hotel, restaurant, product, team, or personal archive each has its own rules,
+            vocabulary, context, and answers. The agent should know that world deeply.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-soft">
+          <h3>Why build in stages?</h3>
+          <p class="muted mb-0">
+            A knowledge agent does not need a perfect knowledge base on day one.
+            It can start small, learn from real questions, and improve continuously.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="section anchor-offset">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-kicker">How it works</div>
+      <h2 class="section-title">From private knowledge to grounded answers</h2>
+      <p class="muted fs-5 mx-auto" style="max-width:760px;">
+        The agent combines structured knowledge, semantic retrieval, orchestration, and controlled use of LLMs.
+      </p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card-soft">
+          <div class="step-number">1</div>
+          <h4>Curate Knowledge</h4>
+          <p class="muted mb-0">Collect facts, stories, documents, FAQs, policies, or process knowledge into a structured foundation.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-soft">
+          <div class="step-number">2</div>
+          <h4>Retrieve Context</h4>
+          <p class="muted mb-0">Use embeddings and semantic search to find the most relevant knowledge for each question.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-soft">
+          <div class="step-number">3</div>
+          <h4>Orchestrate</h4>
+          <p class="muted mb-0">Decide whether to answer directly, ask for clarification, call the LLM, or route to a workflow.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-soft">
+          <div class="step-number">4</div>
+          <h4>Respond</h4>
+          <p class="muted mb-0">Generate clear answers grounded in trusted content, with boundaries to reduce hallucination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="progress" class="section bg-soft anchor-offset">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="section-kicker">Development Journey</div>
+        <h2 class="section-title">Current State &amp; Progress</h2>
+        <p class="muted fs-5">
+          The system is working — but still evolving.
+        </p>
+        <p class="muted">
+          What started as a personal experiment has grown into a broader exploration of how
+          domain-specific AI agents can be built, refined, and eventually made accessible to others.
+          I am building this on my spare time, so progress moves in focused iterations rather than
+          a fixed product roadmap.
+        </p>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="card-soft">
+              <h4>Progress So Far</h4>
+              <div class="mt-4">
+                <h5>October 2024</h5>
+                <p class="muted mb-2">Built the first working agent based on my personal cooking stories.</p>
+                <ul class="muted mb-4">
+                  <li>Built manually with AI assistance</li>
+                  <li>Ran locally</li>
+                  <li>Structured around memory, retrieval, and answer generation</li>
+                  <li>Focused on capturing personal knowledge rather than generic recipes</li>
+                </ul>
+              </div>
+              <div>
+                <h5>December 2024</h5>
+                <p class="muted mb-2">Extended the same architecture to a real-world use case:</p>
+                <ul class="muted mb-4">
+                  <li>Hotel Assistant Agent deployed at Courtyard Shanghai International Tourism and Resorts Zone</li>
+                  <li>Validated that domain-specific agents can work in production environments</li>
+                </ul>
+              </div>
+              <div>
+                <h5>2025 – Refining the Hotel Assistant</h5>
+                <p class="muted mb-2">
+                  Continued improving the hotel knowledge base with customer feedback and real usage patterns.
+                </p>
+                <ul class="muted mb-4">
+                  <li>Refined hotel-specific knowledge based on customer questions and feedback</li>
+                  <li>Improved the UI flow for a clearer guest assistant experience</li>
+                  <li>Iterated on answer quality, coverage, and practical usability</li>
+                </ul>
+              </div>
+              <div>
+                <h5>2026 – Reflection & Reset</h5>
+                <p class="muted mb-2">As AI evolved rapidly, I paused active development to rethink the foundation:</p>
+                <ul class="muted mb-3">
+                  <li>How should a generic knowledge system be designed?</li>
+                  <li>What makes an agent reusable across domains?</li>
+                  <li>How can this be built without heavy engineering overhead?</li>
+                </ul>
+                <p class="muted mb-0">
+                  This led to a new direction: rebuilding i80agent using tools like Claude Code
+                  and OpenAI Codex, with the goal of minimizing manual coding and focusing on
+                  system design instead.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-soft">
+              <h4>What Works Today</h4>
+              <ul class="muted mb-0">
+                <li>Knowledge-based retrieval grounded in structured content</li>
+                <li>Query-focused embedding strategy for better matching</li>
+                <li>Domain-specific answer cards aligned with real user questions</li>
+                <li>Basic orchestration logic (direct answer vs LLM vs fallback)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-soft">
+              <h4>What Is Still Manual</h4>
+              <ul class="muted mb-0">
+                <li>Agent setup and configuration</li>
+                <li>Knowledge base structuring and ingestion</li>
+                <li>Publishing and deployment</li>
+                <li>Use-case tuning and iteration</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card-soft">
+              <h4>What I’m Working on Next</h4>
+              <p class="muted">
+                The goal is to evolve i80agent into a generic platform for building
+                domain-specific AI agents.
+              </p>
+              <p class="muted mb-2">Current focus areas:</p>
+              <ul class="muted mb-0">
+                <li>A simpler, more intuitive agent creation flow</li>
+                <li>Better knowledge management UI</li>
+                <li>Confidence-based routing and decision logic</li>
+                <li>Multi-domain scalability</li>
+                <li>A path from answering questions to triggering actions (APIs, workflows, integrations)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5">
+        <div class="section-kicker">The story</div>
+        <h2 class="section-title">Why I’m building this</h2>
+      </div>
+      <div class="col-lg-7">
+        <div class="quote-box">
+          <p class="fs-5 mb-3">
+            It started with a simple realization: LLMs are powerful, but they do not know your personal or business knowledge.
+          </p>
+          <p class="muted mb-4">
+            That led me from cooking stories and memory into a broader idea:
+            AI agents grounded in real, trusted domain knowledge.
+          </p>
+          <a class="btn btn-outline-dark" href="road-to-i80.html">Read My Road to i80</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notes" class="section bg-soft anchor-offset">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="section-kicker">Reflections</div>
+        <h2 class="section-title">Ideas &amp; Notes</h2>
+        <p class="muted">
+          A living journal of experiments, product thinking, technical notes, and research on trusted domain agents.
+        </p>
+      </div>
+      <div class="col-lg-8">
+        <div class="article-card">
+          <a href="doc/is_rag_dead.html">Is RAG Dead?</a>
+          <div class="muted">May 2, 2026</div>
+          <p class="muted mb-0">A practical reflection on why the concept behind RAG still matters, even as naive RAG becomes insufficient for domain-specific AI agents.</p>
+        </div>
+        <div class="article-card">
+          <a href="doc/last_line_of_code.html">The Last Line of Code</a>
+          <div class="muted">April 3, 2026</div>
+          <p class="muted mb-0">A reflection on the shift from writing code to designing intent through structured natural language.</p>
+        </div>
+        <div class="article-card">
+          <a href="doc/a_embedding_methods.html">Selecting the Best Embedding Method for Limited Domain Knowledge</a>
+          <div class="muted">May 21, 2025</div>
+          <p class="muted mb-0">A comparison of chunk-based and query-focused embedding strategies for private-domain agents.</p>
+        </div>
+        <div class="article-card">
+          <a href="doc/p1.html">Enhancing Query Retrieval Precision Through Optimized Embedding Text Selection</a>
+          <div class="muted">Nov 16, 2024</div>
+          <p class="muted mb-0">Research notes on how embedding construction affects semantic search precision.</p>
+        </div>
+        <div class="article-card d-none">
+          <div class="article-card-title">Optimizing Retrieval in Private Knowledge Agents</div>
+          <div class="muted">Paper in progress</div>
+          <p class="muted mb-0">A Comparison of Query-Focused Embeddings vs. Traditional Embedding Strategies for Domain-Specific AI Agents</p>
+        </div>
+        <div class="article-card">
+          <a href="doc/py_setup.html">Setting Up a Python Environment for AI Agent Experiments</a>
+          <div class="muted">Early practical note</div>
+          <p class="muted mb-0">A setup note from the first phase of the i80agent journey, when I was getting the Python foundation in place.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="card-soft text-center">
+      <h2 class="section-title">Want to follow or collaborate?</h2>
+      <p class="muted fs-5 mx-auto" style="max-width:720px;">
+        i80agent is still in progress. If you are working on similar problems,
+        have a private-domain use case, or want early access, I welcome conversation.
+      </p>
+      <a class="btn btn-primary" href="mailto:alex@i80.com?subject=i80agent%20Collaboration%20or%20Early%20Access">Email Alex</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+    <div>© 2026 i80Solutions. All Rights Reserved.</div>
+    <div><a class="footer-link" href="mailto:alex@i80.com">alex@i80.com</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
