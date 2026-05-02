@@ -236,6 +236,18 @@ body {
   box-shadow: 0 18px 45px rgba(17,24,39,0.10);
 }
 
+.story-inline-image {
+  margin: 46px 0 6px;
+}
+
+.story-inline-image img {
+  display: block;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 16px 38px rgba(17,24,39,0.09);
+}
+
 .story-content {
   max-width: 880px;
 }
