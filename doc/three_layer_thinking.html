@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Three-Layer Thinking for Building Knowledge Agents</title>
+  <meta name="description" content="How Three-Layer Penetration Thinking can help design better prompts, specs, and knowledge agents.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8fafc;
+    }
+
+    .article-wrap {
+      max-width: 880px;
+    }
+
+    .article-body {
+      background: #fff;
+      border: 1px solid var(--i80-border);
+      border-radius: 8px;
+      padding: 42px;
+      box-shadow: 0 10px 35px rgba(17,24,39,0.04);
+    }
+
+    .article-body h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+      margin-bottom: 14px;
+    }
+
+    .article-subtitle {
+      color: var(--i80-dark);
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
+      line-height: 1.18;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
+    }
+
+    .article-body h2 {
+      margin-top: 42px;
+      margin-bottom: 14px;
+      font-weight: 780;
+      letter-spacing: -0.03em;
+    }
+
+    .article-body h3 {
+      margin-top: 28px;
+      font-weight: 740;
+      letter-spacing: -0.02em;
+    }
+
+    .article-body p,
+    .article-body li {
+      font-size: 1.06rem;
+    }
+
+    .article-meta {
+      color: var(--i80-muted);
+      margin-bottom: 32px;
+    }
+
+    .article-callout {
+      border-left: 4px solid var(--i80-accent);
+      background: #f8fafc;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 28px 0;
+    }
+
+    .layer-card {
+      border: 1px solid var(--i80-border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      background: #fff;
+    }
+
+    .source-note {
+      font-size: 0.98rem;
+      color: var(--i80-muted);
+    }
+
+    @media (max-width: 768px) {
+      .article-body {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span></a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container article-wrap">
+      <article class="article-body">
+        <div class="section-kicker">Reflections</div>
+        <h1>Three-Layer Thinking for Building Knowledge Agents</h1>
+        <p class="article-subtitle">How surface, essence, and philosophy can turn AI from an answer generator into a design partner</p>
+        <p class="article-meta">By Alex P. Wang | May 3, 2026 | Tags: Knowledge Agents, Prompting, Structured Intent, LLMs</p>
+
+        <p class="source-note">
+          Source note: This reflection is based on a class I took with Bill Wu, an AI expert in the Bay Area,
+          on a framework he called Three-Layer Penetration Thinking.
+        </p>
+
+        <p class="lead">
+          One of the biggest lessons I have learned while building knowledge agents is that the quality of AI output
+          depends heavily on the quality of human thinking that comes before it.
+        </p>
+
+        <p>
+          It is easy to treat an LLM as a fast answer machine. Ask a question, get a response, revise the prompt,
+          and keep going. That works for simple tasks. But when the work involves product design, agent architecture,
+          knowledge systems, or real business decisions, surface-level prompting is not enough.
+        </p>
+
+        <p>
+          This is where Three-Layer Thinking becomes useful. It gives a simple way to separate what is visible
+          from what is structural, and what is structural from what is truly important.
+        </p>
+
+        <p>
+          The method can help while using an LLM directly, but it is also useful when designing a knowledge agent.
+          A knowledge agent needs more than a good answer to one prompt. It needs a way to understand user intent,
+          retrieve trusted knowledge, apply rules, and decide how to respond.
+        </p>
+
+        <h2>The Three Layers</h2>
+        <p>
+          The framework separates thinking into three layers: phenomenon, essence, and philosophy.
+        </p>
+
+        <div class="layer-card">
+          <h3>Layer 1: Phenomenon</h3>
+          <p class="mb-0">
+            What is happening on the surface? What did the user ask? What symptoms, events, facts,
+            or visible problems can we observe?
+          </p>
+        </div>
+
+        <div class="layer-card">
+          <h3>Layer 2: Essence</h3>
+          <p class="mb-0">
+            Why is it happening? What are the root causes, system patterns, constraints, assumptions,
+            and hidden dynamics underneath the surface?
+          </p>
+        </div>
+
+        <div class="layer-card">
+          <h3>Layer 3: Philosophy</h3>
+          <p class="mb-0">
+            What does it mean? What principles, values, long-term direction, and judgment should guide
+            the decision?
+          </p>
+        </div>
+
+        <p>
+          The idea is not to make thinking more complicated. It is to avoid getting trapped at the surface.
+          Many AI prompts stay at Layer 1: answer this question, write this paragraph, fix this bug, build this feature.
+          But the best work usually requires moving through all three layers.
+        </p>
+
+        <h2>Why This Matters for LLMs</h2>
+        <p>
+          LLMs often mirror the level of thinking in the prompt. If the prompt only describes a surface problem,
+          the answer often stays at the surface too. The model may sound fluent, but the response can still be
+          generic, shallow, or misaligned with the real goal.
+        </p>
+
+        <p>
+          When we guide the model through the three layers, we give it a better thinking path.
+        </p>
+
+        <ul>
+          <li>At the phenomenon layer, the model clarifies what is visible.</li>
+          <li>At the essence layer, the model analyzes causes, structure, and trade-offs.</li>
+          <li>At the philosophy layer, the model considers direction, principles, and long-term implications.</li>
+        </ul>
+
+        <div class="article-callout">
+          Better prompting is not only about better wording. It is about giving the model a better thinking structure.
+        </div>
+
+        <h2>How It Helps Build Knowledge Agents</h2>
+        <p>
+          For knowledge agents, this framework is especially useful because domain-specific AI agents are not just
+          chat interfaces. They are systems that must understand user intent, retrieve trusted knowledge,
+          decide how to respond, and behave according to clear principles.
+        </p>
+
+        <p>
+          Three-Layer Thinking can help at several levels of the product.
+        </p>
+
+        <h3>1. Understanding User Questions</h3>
+        <p>
+          A user question has a surface form, but the real intent may be deeper.
+        </p>
+
+        <p>
+          For example, a hotel guest may ask, "Can I check out late?" At the phenomenon layer, this is a
+          simple policy question. At the essence layer, the agent needs to understand room availability,
+          hotel rules, possible fees, and whether the answer depends on the guest's booking. At the philosophy
+          layer, the agent should represent the hotel's service values: be helpful, be accurate, and avoid
+          promising something the hotel cannot honor.
+        </p>
+
+        <p>
+          That kind of layered interpretation helps the agent avoid shallow answers.
+        </p>
+
+        <h3>2. Designing the Knowledge Base</h3>
+        <p>
+          The phenomenon layer captures common questions and visible user needs. The essence layer organizes
+          the knowledge behind those questions: policies, rules, exceptions, relationships, and decision paths.
+          The philosophy layer defines what kind of answers the agent should give and what boundaries it should
+          respect.
+        </p>
+
+        <p>
+          This is useful because a strong agent needs more than stored text. It needs structured knowledge
+          shaped around real use.
+        </p>
+
+        <h3>3. Improving Retrieval and Routing</h3>
+        <p>
+          Retrieval is not just finding text that looks similar. For a domain-specific agent, retrieval should
+          connect surface questions to the right underlying answer.
+        </p>
+
+        <p>
+          Three-Layer Thinking helps clarify the route:
+        </p>
+
+        <ul>
+          <li>Phenomenon: What did the user ask?</li>
+          <li>Essence: What intent, policy, or knowledge structure does this map to?</li>
+          <li>Philosophy: Should the agent answer directly, ask a clarifying question, call the LLM, or fallback?</li>
+        </ul>
+
+        <p>
+          This maps naturally to a knowledge agent's design: direct answers when confidence is high, LLM synthesis
+          when context is nuanced, and fallback behavior when the system does not know enough.
+        </p>
+
+        <h3>4. Writing Better Specs Before Coding</h3>
+        <p>
+          This framework also connects directly to structured intent and AI-assisted development. Before asking
+          AI to implement a feature, I can use the three layers to design the feature more clearly.
+        </p>
+
+        <ul>
+          <li>Phenomenon: What problem are users experiencing?</li>
+          <li>Essence: What system behavior, data model, and workflow are needed?</li>
+          <li>Philosophy: What principle should guide the experience?</li>
+        </ul>
+
+        <p>
+          Once those layers are clear, the specification becomes stronger. And when the specification is stronger,
+          AI-generated implementation becomes more reliable.
+        </p>
+
+        <h2>A Practical Prompt Template</h2>
+        <p>
+          Here is a simple version of the framework I can use while designing knowledge agent features:
+        </p>
+
+        <pre><code>Use Three-Layer Thinking to analyze this feature or problem.
+
+Layer 1: Phenomenon
+- What is happening on the surface?
+- What are users asking, seeing, or struggling with?
+
+Layer 2: Essence
+- What are the root causes, constraints, and system patterns?
+- What knowledge, data, workflow, or architecture is involved?
+
+Layer 3: Philosophy
+- What principle should guide the design?
+- What outcome should this serve over the long term?
+
+Then recommend a clear direction and next steps.</code></pre>
+
+        <p>
+          This kind of prompt does not guarantee truth. It does not replace verification, testing, or domain knowledge.
+          But it can push the conversation with the LLM beyond the first obvious answer.
+        </p>
+
+        <h2>When Not to Use Three-Layer Thinking</h2>
+        <p>
+          Three-Layer Thinking is useful, but it should not be applied to everything. Some tasks are simple and
+          do not need this much structure.
+        </p>
+
+        <p>
+          I would not use it for quick factual lookups, simple rewrites, basic translations, small formatting
+          changes, or straightforward code snippets. In those cases, adding layers can slow things down without
+          improving the result.
+        </p>
+
+        <p>
+          The framework is most useful when the problem involves ambiguity, trade-offs, system design, product
+          direction, or long-term consequences. If the task requires judgment, it is worth going deeper. If the
+          task is routine, a direct prompt is usually enough.
+        </p>
+
+        <h2>Where It Fits with Structured Intent</h2>
+        <p>
+          In my article on vibe coding, I argued that the real shift is from writing prompts to defining systems.
+          Three-Layer Thinking helps with that shift. It gives a way to move from a raw request to a deeper
+          system definition.
+        </p>
+
+        <p>
+          The phenomenon layer helps describe the user-facing need. The essence layer helps define the system.
+          The philosophy layer helps clarify the product judgment behind the system.
+        </p>
+
+        <p>
+          Together, these layers can become part of the process for writing better specs, designing better
+          knowledge bases, and building better AI agents.
+        </p>
+
+        <h2>Closing</h2>
+        <p>
+          For me, the value of Three-Layer Thinking is not only that it improves LLM answers. It improves the
+          conversation before the answer. It helps me ask better questions, see deeper causes, and connect design
+          decisions to a clearer purpose.
+        </p>
+
+        <p>
+          That is exactly the kind of thinking a knowledge agent needs. A domain-specific AI agent should not simply answer
+          surface questions. It should connect those questions to trusted knowledge, system structure, and clear
+          principles.
+        </p>
+
+        <div class="article-callout">
+          A better AI agent begins with better thinking about the domain it is meant to serve.
+        </div>
+
+        <h2>Reference</h2>
+        <p class="source-note mb-0">
+          Bill Wu, class lecture on Three-Layer Penetration Thinking for LLM prompting and analysis,
+          Bay Area, 2026. Reflections and knowledge agent applications are my own interpretation.
+        </p>
+
+        <div class="mt-5">
+          <a class="btn btn-outline-dark" href="../index.html#notes">Back to Ideas &amp; Notes</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div>© 2026 i80Solutions. All Rights Reserved.</div>
+      <div><a class="footer-link" href="mailto:alex@i80.com">alex@i80.com</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
