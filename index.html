@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>i80agent — Build AI Agents That Know Your Domain</title>
-  <meta name="description" content="i80agent is a platform in progress for building domain-specific AI agents from private knowledge.">
+  <title>i80agent — Build Knowledge Agents with Retrieval and Intent</title>
+  <meta name="description" content="i80agent is a platform in progress for building Knowledge Agents that combine trusted domain retrieval with expert intent processing.">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
     <div id="nav" class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto gap-lg-2">
         <li class="nav-item"><a class="nav-link" href="#platform">i80agent</a></li>
+        <li class="nav-item"><a class="nav-link" href="#capabilities">Retrieval + Intent</a></li>
         <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
         <li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li>
         <li class="nav-item"><a class="nav-link" href="#notes">Notes</a></li>
@@ -38,11 +39,15 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-8">
         <span class="pill mb-3">i80agent is currently in active development</span>
-        <h1>Build AI Agents That Know Your <span class="text-accent">Domain</span></h1>
+        <h1>Build Knowledge Agents with <span class="text-accent">Retrieval + Intent</span></h1>
         <p class="lead mt-4">
-          i80agent is a platform in progress for turning private knowledge into grounded,
-          domain-specific AI agents — agents that can answer accurately, reason within context,
-          and grow as your knowledge grows.
+          i80agent is a platform in progress for building Knowledge Agents that combine trusted
+          domain retrieval with expert intent processing.
+        </p>
+        <p class="muted fs-5">
+          Some requests need a grounded answer from your private knowledge base. Others need a
+          structured expert workflow powered by an LLM. i80agent is designed to support both paths,
+          and combine them when a domain requires it.
         </p>
         <div class="d-flex flex-wrap gap-3 mt-4">
           <a class="btn btn-primary d-none" href="mailto:alex@i80.com?subject=Request%20Early%20Access%20to%20i80agent">Request Early Access</a>
@@ -50,20 +55,21 @@
         </div>
         <p class="muted mt-4 mb-0">
           Not fully self-serve yet. Today, new agents still require some manual setup.
-          The goal is to make knowledge-based agent creation accessible to anyone.
+          The goal is to make Knowledge Agent creation accessible to anyone.
         </p>
       </div>
       <div class="col-lg-4">
         <div class="card-soft">
-          <h3>Private Knowledge → Trusted Agent</h3>
+          <h3>Private Knowledge → Retrieval + Intent</h3>
           <p class="muted">
             General LLMs know the internet. They do not know your business, your process,
-            your stories, or your domain unless that knowledge is collected, structured, and retrieved.
+            your stories, or your domain unless that knowledge is collected, structured,
+            retrieved, and guided by expert intent.
           </p>
           <div>
             <span class="pill">Knowledge Base</span>
-            <span class="pill">Embeddings</span>
             <span class="pill">Retrieval</span>
+            <span class="pill">Structured Intent</span>
             <span class="pill">Orchestration</span>
             <span class="pill">LLM</span>
           </div>
@@ -82,21 +88,46 @@
       </div>
       <div class="col-lg-7">
         <p class="fs-5">
-          i80agent is a platform for building knowledge-based AI agents from private domain knowledge.
-          Users start with a focused knowledge base, keep adding knowledge over time, and create agents
-          that answer from trusted content instead of guessing.
+          i80agent is a platform for building Knowledge Agents from private domain knowledge.
+          A Knowledge Agent can use generic retrieval to access trusted domain memory and,
+          when the domain requires expertise, use structured intent to guide specialized LLM workflows.
         </p>
         <div class="row g-3 mt-3">
           <div class="col-md-6">
             <div class="card-soft">
-              <h4>For personal knowledge</h4>
-              <p class="muted mb-0">Cooking stories, memories, notes, decisions, creative process, and lived experience.</p>
+              <div class="section-kicker">Personal</div>
+              <h4>Retrieval</h4>
+              <p class="muted mb-0">
+                Cooking stories, memories, notes, decisions, creative process, and lived experience.
+              </p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="card-soft">
-              <h4>For business knowledge</h4>
-              <p class="muted mb-0">Hotel guest support, HR onboarding, internal help desks, product documentation, and service FAQs.</p>
+              <div class="section-kicker">Personal</div>
+              <h4>Intent</h4>
+              <p class="muted mb-0">
+                Plan a dinner menu, evaluate a creative idea, or turn past notes into a guided recommendation.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-soft">
+              <div class="section-kicker">Business</div>
+              <h4>Retrieval</h4>
+              <p class="muted mb-0">
+                Hotel guest support, HR onboarding, internal help desks, product documentation,
+                service FAQs, and policy lookup.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-soft">
+              <div class="section-kicker">Business</div>
+              <h4>Intent</h4>
+              <p class="muted mb-0">
+                Review risks, compare policies, triage requests, evaluate documents, or generate structured recommendations.
+              </p>
             </div>
           </div>
         </div>
@@ -105,15 +136,67 @@
   </div>
 </section>
 
-<section class="section bg-soft">
+<section id="capabilities" class="section bg-soft anchor-offset">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-kicker">Retrieval + Intent</div>
+      <h2 class="section-title">Two Capabilities, One Agent Platform</h2>
+      <p class="muted fs-5 mx-auto" style="max-width:820px;">
+        Not every domain needs the same kind of agent. Some agents mainly need generic retrieval
+        from trusted knowledge. Others need expert intent processing for review, analysis,
+        decisions, or recommendations. More advanced systems can coordinate both.
+      </p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card-soft h-100">
+          <div class="section-kicker">Retrieval</div>
+          <h3>Generic Knowledge Retrieval</h3>
+          <p class="muted">
+            For known questions, the agent retrieves answers directly from your structured knowledge base.
+            If confidence is high, it can respond instantly without calling an LLM.
+          </p>
+          <ul class="muted">
+            <li>Semantic search and direct retrieval</li>
+            <li>Fast, low-cost, and grounded in trusted content</li>
+            <li>LLM optional when polishing, explaining, or handling ambiguity</li>
+          </ul>
+          <p class="muted mb-0"><strong>Example:</strong> “What time is check-out?”</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card-soft h-100">
+          <div class="section-kicker">Intent</div>
+          <h3>Expert Intent Processing</h3>
+          <p class="muted">
+            For complex requests, the agent selects a predefined expert intent, loads the right
+            workflow, and uses an LLM to perform specialized processing.
+          </p>
+          <ul class="muted">
+            <li>Reusable task frameworks for review, analysis, and decision support</li>
+            <li>Always LLM-driven, but guided by domain expertise encoded as intent</li>
+            <li>Designed for domains where the answer is not already stored</li>
+          </ul>
+          <p class="muted mb-0"><strong>Example:</strong> “Review this report and identify risks.”</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote-box text-center mt-4">
+      <p class="fs-5 mb-0"><strong>Knowledge Agents can access domain memory, apply expert intent, or coordinate both.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-4">
         <div class="card-soft">
           <h3>Why not just ChatGPT?</h3>
           <p class="muted mb-0">
-            LLMs are powerful, but without your private knowledge, they are incomplete.
-            i80agent is designed to ground answers in your own trusted content.
+            LLMs are powerful, but without trusted domain retrieval and expert intent,
+            they are incomplete. i80agent grounds both knowledge lookup and specialized workflows
+            in your own domain.
           </p>
         </div>
       </div>
@@ -121,8 +204,8 @@
         <div class="card-soft">
           <h3>Why domain-specific?</h3>
           <p class="muted mb-0">
-            A hotel, restaurant, product, team, or personal archive each has its own rules,
-            vocabulary, context, and answers. The agent should know that world deeply.
+            A hotel, restaurant, product, team, clinic workflow, or personal archive each has its own rules,
+            vocabulary, context, answers, and tasks. The agent should know that world deeply.
           </p>
         </div>
       </div>
@@ -130,8 +213,8 @@
         <div class="card-soft">
           <h3>Why build in stages?</h3>
           <p class="muted mb-0">
-            A knowledge agent does not need a perfect knowledge base on day one.
-            It can start small, learn from real questions, and improve continuously.
+            A Knowledge Agent does not need a perfect knowledge base or intent workflow on day one.
+            Whether it uses retrieval, intent, or both, it should improve from real usage and feedback.
           </p>
         </div>
       </div>
@@ -143,38 +226,39 @@
   <div class="container">
     <div class="text-center mb-5">
       <div class="section-kicker">How it works</div>
-      <h2 class="section-title">From private knowledge to grounded answers</h2>
-      <p class="muted fs-5 mx-auto" style="max-width:760px;">
-        The agent combines structured knowledge, semantic retrieval, orchestration, and controlled use of LLMs.
+      <h2 class="section-title">Retrieval, intent, or both</h2>
+      <p class="muted fs-5 mx-auto" style="max-width:780px;">
+        i80agent supports different Knowledge Agent patterns. Some agents only need memory access.
+        Some need expert processing. More advanced systems can coordinate both through orchestration.
       </p>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="card-soft">
           <div class="step-number">1</div>
-          <h4>Curate Knowledge</h4>
-          <p class="muted mb-0">Collect facts, stories, documents, FAQs, policies, or process knowledge into a structured foundation.</p>
+          <h4>Structure Knowledge</h4>
+          <p class="muted mb-0">Collect facts, stories, documents, FAQs, policies, or process knowledge into a trusted domain foundation.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card-soft">
           <div class="step-number">2</div>
-          <h4>Retrieve Context</h4>
-          <p class="muted mb-0">Use embeddings and semantic search to find the most relevant knowledge for each question.</p>
+          <h4>Retrieval Agent</h4>
+          <p class="muted mb-0">Access domain memory through embeddings, semantic search, and grounded answer retrieval.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card-soft">
           <div class="step-number">3</div>
-          <h4>Orchestrate</h4>
-          <p class="muted mb-0">Decide whether to answer directly, ask for clarification, call the LLM, or route to a workflow.</p>
+          <h4>Intent Agent</h4>
+          <p class="muted mb-0">Apply domain expertise through structured workflows, expert templates, and controlled LLM processing.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card-soft">
           <div class="step-number">4</div>
-          <h4>Respond</h4>
-          <p class="muted mb-0">Generate clear answers grounded in trusted content, with boundaries to reduce hallucination.</p>
+          <h4>Orchestrator Agent</h4>
+          <p class="muted mb-0">Coordinate retrieval agents, intent agents, and external workflows when a domain needs a composable system.</p>
         </div>
       </div>
     </div>
@@ -192,7 +276,7 @@
         </p>
         <p class="muted">
           What started as a personal experiment has grown into a broader exploration of how
-          domain-specific AI agents can be built, refined, and eventually made accessible to others.
+          Knowledge Agents can be built, refined, and eventually made accessible to others.
           I am building this in my spare time, so progress comes in waves and moves more slowly than
           I would like.
         </p>
@@ -263,9 +347,10 @@
                 </p>
               </div>
               <div class="mt-4">
-                <h5>May 2, 2026</h5>
+                <h5>May 2026</h5>
                 <p class="muted mb-0">
-                  Rebuilt the i80.com website using OpenAI Codex without writing a single line of code manually.
+                  Rebuilt the i80.com website using OpenAI Codex without writing a single line of code manually,
+                  and refined the platform concept around Retrieval Agents, Intent Agents, and Orchestrator Agents.
                 </p>
               </div>
             </div>
@@ -277,7 +362,8 @@
                 <li>Knowledge-based retrieval grounded in structured content</li>
                 <li>Query-focused embedding strategy for better matching</li>
                 <li>Domain-specific answer cards aligned with real user questions</li>
-                <li>Basic orchestration logic (direct answer vs LLM vs fallback)</li>
+                <li>Basic orchestration logic for direct answers, LLM use, and fallback</li>
+                <li>Early design direction for expert intent workflows</li>
               </ul>
             </div>
           </div>
@@ -297,15 +383,17 @@
               <h4>What I’m Working on Next</h4>
               <p class="muted">
                 The goal is to evolve i80agent into a generic platform for building
-                domain-specific AI agents.
+                Knowledge Agents that can work as Retrieval Agents, Intent Agents, or Orchestrator Agents
+                depending on the domain and use case.
               </p>
               <p class="muted mb-2">Current focus areas:</p>
               <ul class="muted mb-0">
                 <li>A simpler, more intuitive agent creation flow</li>
                 <li>Better knowledge management UI</li>
                 <li>Confidence-based routing and decision logic</li>
+                <li>Reusable expert intent templates for review, analysis, and decision support</li>
                 <li>Multi-domain scalability</li>
-                <li>A path from answering questions to triggering actions (APIs, workflows, integrations)</li>
+                <li>A path from retrieval and expert workflows to triggered actions (APIs, workflows, integrations)</li>
               </ul>
             </div>
           </div>
@@ -327,9 +415,12 @@
           <p class="fs-5 mb-3">
             It started with a simple realization: LLMs are powerful, but they do not know your personal or business knowledge.
           </p>
-          <p class="muted mb-4">
+          <p class="muted mb-3">
             That led me from cooking stories and memory into a broader idea:
-            AI agents grounded in real, trusted domain knowledge.
+            Knowledge Agents grounded in real, trusted domain knowledge.
+          </p>
+          <p class="muted mb-4">
+            The next step is helping agents combine trusted retrieval with expert intent processing.
           </p>
           <a class="btn btn-outline-dark" href="road-to-i80.html">Read My Road to i80</a>
         </div>
@@ -345,7 +436,7 @@
         <div class="section-kicker">Reflections</div>
         <h2 class="section-title">Ideas &amp; Notes</h2>
         <p class="muted">
-          A living journal of experiments, product thinking, technical notes, and research on trusted domain agents.
+          A living journal of experiments, product thinking, technical notes, and research on Knowledge Agents, retrieval, and structured intent.
         </p>
       </div>
       <div class="col-lg-8">
@@ -363,9 +454,9 @@
         </div>
 
         <div class="article-card">
-          <a href="doc/beyond_vibe_coding.html">Beyond Vibe Coding: From Simple Prompts to Structured Intent</a>
+          <a href="doc/beyond_vibe_coding.html">Beyond Vibe Coding: From Simple Prompts to Spec-Driven Development</a>
           <div class="muted">April 26, 2026</div>
-          <p class="muted mb-0">Why fast AI coding breaks as systems grow, and how structured intent helps AI-generated software scale.</p>
+          <p class="muted mb-0">Why fast AI coding breaks as systems grow, and how spec-driven development helps AI-generated software scale.</p>
         </div>
 
         <div class="article-card">
@@ -404,7 +495,7 @@
       <h2 class="section-title">Want to follow or collaborate?</h2>
       <p class="muted fs-5 mx-auto" style="max-width:720px;">
         i80agent is still in progress. If you are working on similar problems,
-        have a private-domain use case, or want early access, I welcome conversation.
+        have a private-domain use case, or want to explore Knowledge Agents with retrieval and expert intent, I welcome conversation.
       </p>
       <a class="btn btn-primary" href="mailto:alex@i80.com?subject=i80agent%20Collaboration%20or%20Early%20Access">Email Alex</a>
     </div>
