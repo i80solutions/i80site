@@ -174,6 +174,7 @@ body {
   font-weight: 760;
   text-decoration: none;
   font-size: 1.15rem;
+  text-underline-offset: 0.18em;
 }
 
 .article-card-title {
@@ -184,6 +185,13 @@ body {
 
 .article-card a:hover {
   color: var(--i80-accent);
+}
+
+.article-card a:focus-visible {
+  color: var(--i80-accent);
+  outline: 2px solid rgba(33, 158, 188, 0.35);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .footer {
@@ -285,5 +293,10 @@ body {
   .story-inline-image {
     margin: 34px auto 0;
     max-width: 82%;
+  }
+  .article-card a {
+    color: var(--i80-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
 }
