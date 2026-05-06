@@ -285,10 +285,28 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 84px 0 56px;
+    padding: 56px 0 42px;
   }
   .section {
-    padding: 56px 0;
+    padding: 44px 0;
+  }
+  .section-sm {
+    padding: 38px 0;
+  }
+  .section .text-center.mb-5 {
+    margin-bottom: 2rem !important;
+  }
+  .row.g-5 {
+    --bs-gutter-y: 2rem;
+  }
+  .row.g-4 {
+    --bs-gutter-y: 1.25rem;
+  }
+  .card-soft {
+    padding: 22px;
+  }
+  .quote-box {
+    padding: 20px 22px;
   }
   .story-inline-image {
     margin: 34px auto 0;
