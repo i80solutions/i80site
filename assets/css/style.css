@@ -160,6 +160,22 @@ body {
   box-shadow: 0 10px 35px rgba(17,24,39,0.04);
 }
 
+.workflow-visual {
+  margin-top: 42px;
+}
+
+.workflow-image {
+  display: block;
+  width: min(100%, 1040px);
+  height: auto;
+  max-height: 680px;
+  margin: 0 auto;
+  object-fit: contain;
+  border: 1px solid var(--i80-border);
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(17,24,39,0.10);
+}
+
 .article-card {
   border-bottom: 1px solid var(--i80-border);
   padding: 24px 0;
@@ -307,6 +323,13 @@ body {
   }
   .quote-box {
     padding: 20px 22px;
+  }
+  .workflow-visual {
+    margin-top: 28px;
+  }
+  .workflow-image {
+    max-height: none;
+    border-radius: 10px;
   }
   .story-inline-image {
     margin: 34px auto 0;
