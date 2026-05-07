@@ -452,7 +452,7 @@ body {
     margin-top: 22px;
   }
   .story-photo img {
-    max-height: 300px;
+    max-height: 180px;
   }
   .article-card a {
     color: var(--i80-accent);
