@@ -210,6 +210,38 @@ body {
   font-weight: 650;
 }
 
+.home-story-section {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.home-story-heading {
+  border-left: 5px solid var(--i80-accent);
+  padding-left: 24px;
+}
+
+.home-story-card {
+  position: relative;
+  border-left-width: 0;
+  border-top: 5px solid var(--i80-accent);
+  padding: 34px;
+}
+
+.home-story-card::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  right: 26px;
+  color: rgba(33,158,188,0.16);
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.home-story-card .btn {
+  margin-top: 4px;
+}
+
 .timeline-card {
   padding: 30px 30px 26px;
 }
@@ -582,10 +614,38 @@ body {
 }
 
 .story-signoff {
+  display: flex;
+  align-items: center;
+  gap: 18px;
   border-top: 1px solid var(--i80-border);
   padding-top: 18px;
   margin-top: 34px !important;
   font-weight: 650;
+}
+
+.story-signoff a {
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 14px;
+}
+
+.story-signoff img {
+  display: block;
+  width: 128px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--i80-border);
+  box-shadow: 0 10px 24px rgba(17,24,39,0.10);
+}
+
+.story-signoff a:focus-visible {
+  outline: 3px solid rgba(33, 158, 188, 0.35);
+  outline-offset: 5px;
+}
+
+.story-signoff p {
+  margin-bottom: 0;
 }
 
 .story-signoff span {
@@ -626,6 +686,12 @@ body {
   .row.g-5 {
     --bs-gutter-y: 2rem;
   }
+  .notes-row {
+    --bs-gutter-y: 1rem;
+  }
+  #notes .col-lg-4 .muted {
+    margin-bottom: 0;
+  }
   .row.g-4 {
     --bs-gutter-y: 1.25rem;
   }
@@ -650,6 +716,15 @@ body {
   .platform-callout {
     margin-top: 14px;
     padding: 16px 18px;
+  }
+  .home-story-heading {
+    padding-left: 18px;
+  }
+  .home-story-card {
+    padding: 26px 22px;
+  }
+  .home-story-card .btn {
+    width: 100%;
   }
   .cta-card {
     padding: 30px 22px;
@@ -723,6 +798,10 @@ body {
   .story-signoff {
     margin-top: 24px !important;
     padding-top: 16px;
+  }
+  .story-signoff img {
+    width: 112px;
+    height: 76px;
   }
   .story-inline-image {
     margin: 34px auto 0;
