@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Domain Experts Can Build AI Agent Skills</title>
+  <meta name="description" content="A practical guide for turning expert workflows into reusable AI agent skills, using a medical monitor review workflow as an example.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafc; }
+    .article-wrap { max-width: 880px; }
+    .article-body {
+      background: #fff;
+      border: 1px solid var(--i80-border);
+      border-radius: 8px;
+      padding: 42px;
+      box-shadow: 0 10px 35px rgba(17,24,39,0.04);
+    }
+    .article-body h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+      margin-bottom: 14px;
+    }
+    .article-subtitle {
+      color: var(--i80-dark);
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
+      line-height: 1.18;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
+    }
+    .article-body h2 {
+      margin-top: 42px;
+      margin-bottom: 14px;
+      font-weight: 780;
+      letter-spacing: -0.03em;
+    }
+    .article-body h3 {
+      margin-top: 28px;
+      font-weight: 740;
+      letter-spacing: -0.02em;
+    }
+    .article-body p,
+    .article-body li {
+      font-size: 1.06rem;
+    }
+    .article-meta {
+      color: var(--i80-muted);
+      margin-bottom: 32px;
+    }
+    .article-callout {
+      border-left: 4px solid var(--i80-accent);
+      background: #f8fafc;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 28px 0;
+    }
+    .idea-card {
+      border: 1px solid var(--i80-border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      background: #fff;
+    }
+    @media (max-width: 768px) {
+      .article-body { padding: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <span class="brand-i80">i80</span> <span class="brand-solutions">Solutions.</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container article-wrap">
+      <article class="article-body">
+        <div class="section-kicker">Agent Skills</div>
+
+        <h1>How Domain Experts Can Build AI Agent Skills</h1>
+
+        <p class="article-subtitle">
+          Using a medical monitor review workflow as an example
+        </p>
+
+        <p class="article-meta">
+          By Alex P. Wang | May 8, 2026 | Tags: AI Agents, Agent Skills, Domain Expertise, Medical Monitor, Workflow Automation
+        </p>
+
+        <p class="lead">
+          AI tools are already very good at language, summarization, reasoning, and pattern recognition.
+          But many experts still use them like generic chatbots: copy data into an AI tool, ask a question,
+          adjust the prompt, and repeat.
+        </p>
+
+        <p>
+          That works for experimentation, but it does not scale well for recurring professional work.
+          The real opportunity is not just asking AI questions. The real opportunity is turning expert
+          workflows into reusable AI agent skills.
+        </p>
+
+        <div class="article-callout">
+          Instead of repeatedly telling the AI how to think, define the workflow once as a reusable skill.
+        </div>
+
+        <h2>What Is an AI Agent Skill?</h2>
+
+        <p>
+          An AI agent skill is a reusable instruction framework that tells an AI agent how to perform
+          a specific type of work.
+        </p>
+
+        <p>
+          A skill is not just a prompt. It can include review logic, evaluation criteria, expected inputs,
+          output structure, escalation rules, domain-specific reasoning patterns, validation steps, and
+          retrieval of supporting knowledge.
+        </p>
+
+        <p>
+          In simple terms, a skill captures how an expert approaches recurring work.
+        </p>
+
+        <div class="idea-card">
+          <h3>Simple Formula</h3>
+          <p class="mb-0">
+            Stored Skill + User Data + Optional Retrieved Knowledge = Structured AI-Assisted Output
+          </p>
+        </div>
+
+        <h2>Why Generic Prompting Breaks Down</h2>
+
+        <p>
+          Many professionals start with a simple prompt such as:
+        </p>
+
+        <div class="article-callout">
+          Review this report and identify risks.
+        </div>
+
+        <p>
+          Sometimes the result is useful. Sometimes it is vague, inconsistent, or misses important findings.
+          The user then adds more instructions: focus on operational risks, check compliance issues, summarize
+          key findings, provide recommendations, use bullet points, and so on.
+        </p>
+
+        <p>
+          Over time, prompts become longer, harder to manage, inconsistent, difficult to reuse, and difficult
+          to share across teams.
+        </p>
+
+        <p>
+          The problem is not the AI model itself. The problem is that the workflow exists only inside scattered
+          prompts and human memory.
+        </p>
+
+        <h2>The Shift: From Prompting to Skills</h2>
+
+        <p>
+          Instead of writing the same instructions repeatedly, experts can define reusable skills.
+        </p>
+
+        <p>
+          The workflow changes from:
+        </p>
+
+        <div class="article-callout">
+          Human repeatedly explains the task
+          <br>
+          to
+          <br>
+          Reusable Skill + User Data
+        </div>
+
+        <p>
+          For example, instead of explaining the entire medical review process each time, a user can simply say:
+        </p>
+
+        <div class="article-callout">
+          Apply the Medical Monitor Review skill to this AE listing.
+        </div>
+
+        <p>
+          The user provides the data. The skill provides the expertise structure. The AI combines both.
+        </p>
+
+        <h2>Medical Monitor Review as an Example</h2>
+
+        <p>
+          A medical monitor often reviews adverse event listings, laboratory listings, vital signs, coding
+          consistency, eligibility concerns, and protocol deviations.
+        </p>
+
+        <p>
+          The review process usually follows recurring patterns:
+        </p>
+
+        <ul>
+          <li>Identify serious adverse events</li>
+          <li>Identify Grade 3 or Grade 4 events</li>
+          <li>Review liver toxicity</li>
+          <li>Assess dose-response relationships</li>
+          <li>Identify stopping-criteria events</li>
+          <li>Evaluate clinically significant trends</li>
+          <li>Determine whether escalation is needed</li>
+        </ul>
+
+        <p>
+          This is an ideal candidate for an AI agent skill because the workflow is structured, the review
+          criteria are repeatable, the outputs are relatively standardized, and human oversight remains essential.
+        </p>
+
+        <h2>Step 1 — Identify the Repeatable Workflow</h2>
+
+        <p>
+          The first step is not AI. The first step is understanding your own workflow.
+        </p>
+
+        <p>Ask yourself:</p>
+
+        <ul>
+          <li>What recurring tasks do I perform repeatedly?</li>
+          <li>What patterns do I consistently look for?</li>
+          <li>What outputs do I repeatedly generate?</li>
+          <li>What judgment criteria do I apply?</li>
+          <li>What findings usually require escalation?</li>
+        </ul>
+
+        <p>
+          For medical monitor review, the workflow may be:
+        </p>
+
+        <div class="idea-card">
+          <h3>Input</h3>
+          <p>AE listing, lab listing, vital signs listing, study context.</p>
+
+          <h3>Review</h3>
+          <p>Serious events, Grade 3/4 findings, ALT increases, safety signals, eligibility issues, coding consistency.</p>
+
+          <h3>Output</h3>
+          <p class="mb-0">Executive summary, key findings, trends, follow-up actions, human review recommendation.</p>
+        </div>
+
+        <h2>Step 2 — Define the Required Input Data</h2>
+
+        <p>
+          Next, define what data the skill expects. A skill cannot reliably review data that is inconsistent,
+          incomplete, or poorly structured.
+        </p>
+
+        <h3>AE Listing</h3>
+        <ul>
+          <li>Subject ID</li>
+          <li>Treatment arm or dose</li>
+          <li>AE term</li>
+          <li>CTCAE grade</li>
+          <li>Seriousness flag</li>
+          <li>Relationship to study drug</li>
+          <li>Action taken</li>
+          <li>Outcome</li>
+        </ul>
+
+        <h3>Lab Listing</h3>
+        <ul>
+          <li>Subject ID</li>
+          <li>Visit</li>
+          <li>Analyte</li>
+          <li>Result</li>
+          <li>Units</li>
+          <li>Reference range</li>
+          <li>CTCAE grade</li>
+        </ul>
+
+        <h3>Vital Signs Listing</h3>
+        <ul>
+          <li>Subject ID</li>
+          <li>Visit</li>
+          <li>Blood pressure</li>
+          <li>Heart rate</li>
+          <li>Temperature</li>
+          <li>Oxygen saturation</li>
+          <li>Weight</li>
+          <li>Baseline values</li>
+        </ul>
+
+        <h2>Step 3 — Define the Review Logic</h2>
+
+        <p>
+          This is where expertise becomes reusable. The goal is to teach the AI what matters, what patterns
+          to look for, and how to prioritize findings.
+        </p>
+
+        <p>
+          For medical monitor review, focus areas may include:
+        </p>
+
+        <ul>
+          <li>Serious adverse events</li>
+          <li>Grade 3 or Grade 4 abnormalities</li>
+          <li>Liver toxicity</li>
+          <li>Dose-response trends</li>
+          <li>Stopping criteria</li>
+          <li>Skin reactions</li>
+          <li>Protocol deviations</li>
+          <li>Coding inconsistencies</li>
+        </ul>
+
+        <h2>Step 4 — Define the Output Structure</h2>
+
+        <p>
+          Experts often underestimate how important output structure is. A reusable skill should produce
+          consistent outputs.
+        </p>
+
+        <div class="idea-card">
+          <h3>Recommended Output</h3>
+          <ol class="mb-0">
+            <li>Executive Summary</li>
+            <li>Key Safety Findings</li>
+            <li>Trends and Patterns</li>
+            <li>Potential Safety Signals</li>
+            <li>Missing Information</li>
+            <li>Recommended Follow-up Actions</li>
+            <li>Human Review Recommendation</li>
+          </ol>
+        </div>
+
+        <p>
+          This makes reviews easier to read, compare, validate, and eventually automate.
+        </p>
+
+        <h2>Step 5 — Write the Skill File</h2>
+
+        <p>
+          The skill can be written as a simple Markdown file. It does not need to be complicated at first.
+        </p>
+
+        <div class="article-callout">
+          Purpose → Input Data → Focus Areas → Processing Instructions → Output Requirements → Escalation Rules
+        </div>
+
+        <p>
+          This file becomes reusable. You can improve it over time instead of rewriting prompts repeatedly.
+        </p>
+
+        <h2>Step 6 — Test with Sample Data</h2>
+
+        <p>
+          Next, test the skill using synthetic data, sample listings, or de-identified datasets.
+        </p>
+
+        <p>
+          The process is simple:
+        </p>
+
+        <div class="article-callout">
+          Skill File + Data Listing + Simple Invocation
+        </div>
+
+        <p>
+          Example:
+        </p>
+
+        <div class="article-callout">
+          Apply the Medical Monitor Review skill to this dataset.
+        </div>
+
+        <p>
+          Then review what the AI missed, what it overstated, whether the output was clinically useful,
+          and whether the structure helped the review.
+        </p>
+
+        <h2>Step 7 — Refine Through Real Usage</h2>
+
+        <p>
+          The first version will not be perfect. That is expected.
+        </p>
+
+        <p>
+          Over time, new rules get added, edge cases get captured, escalation logic improves, outputs become
+          more useful, and the workflow becomes more standardized.
+        </p>
+
+        <p>
+          This is how expertise gradually becomes operationalized.
+        </p>
+
+        <h2>Skills Do Not Replace Experts</h2>
+
+        <p>
+          This point is important: the goal is not to replace experts.
+        </p>
+
+        <p>
+          The goal is to reduce repetitive work, improve consistency, accelerate review, identify patterns
+          earlier, structure workflows, and support decision-making.
+        </p>
+
+        <p>
+          The expert still reviews findings, validates conclusions, handles ambiguity, and makes final decisions.
+        </p>
+
+        <h2>This Applies Far Beyond Medical Review</h2>
+
+        <p>
+          The same process works in many domains.
+        </p>
+
+        <div class="idea-card">
+          <h3>Legal Review Skill</h3>
+          <p>Identify contract risks, review clauses, flag missing protections, and summarize negotiation concerns.</p>
+        </div>
+
+        <div class="idea-card">
+          <h3>HR Candidate Evaluation Skill</h3>
+          <p>Summarize interview notes, compare competencies, identify gaps, and generate structured recommendations.</p>
+        </div>
+
+        <div class="idea-card">
+          <h3>Financial Review Skill</h3>
+          <p>Identify unusual variances, summarize trends, assess operational impact, and generate follow-up questions.</p>
+        </div>
+
+        <div class="idea-card">
+          <h3>Operations Incident Review Skill</h3>
+          <p class="mb-0">Summarize events, identify root causes, assess severity, and recommend mitigation steps.</p>
+        </div>
+
+        <h2>Retrieval + Skills</h2>
+
+        <p>
+          One important lesson from building domain-specific AI systems is that skills alone are not enough.
+          A skill often still depends on trusted knowledge.
+        </p>
+
+        <p>
+          For example, a medical monitor review skill may need protocol rules, study context, stopping criteria,
+          coding standards, eligibility criteria, and historical decisions.
+        </p>
+
+        <p>
+          This is where retrieval becomes important.
+        </p>
+
+        <div class="article-callout">
+          Retrieve the right knowledge. Apply the right skill. Generate the right output.
+        </div>
+
+        <h2>Final Thoughts</h2>
+
+        <p>
+          Many professionals already have highly structured expertise. They just do not always think of it
+          as something that can be formalized.
+        </p>
+
+        <p>
+          But once recurring workflows become explicit, structured, testable, and reusable, they can evolve
+          into AI agent skills.
+        </p>
+
+        <p>
+          This is one of the most practical paths toward domain-specific AI: not replacing experts, but helping
+          experts scale their expertise more consistently and efficiently.
+        </p>
+
+        <div class="article-callout">
+          The future of professional AI may not be one giant chatbot. It may be many reusable expert skills,
+          each designed around a real workflow.
+        </div>
+
+        <div class="mt-5">
+          <a class="btn btn-outline-dark" href="../index.html#notes">Back to Ideas &amp; Notes</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div>© 2026 i80Solutions. All Rights Reserved.</div>
+      <div><a class="footer-link" href="mailto:alex@i80.com">alex@i80.com</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
