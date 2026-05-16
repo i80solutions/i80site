@@ -6,6 +6,7 @@
   --i80-bg: #f8fafc;
   --i80-accent: #219ebc;
   --i80-accent-dark: #1b829b;
+  --i80-brand-red: #d12828;
 }
 
 body {
@@ -28,11 +29,28 @@ body {
 }
 
 .brand-i80 {
-  color: #000;
+  color: var(--i80-brand-red);
 }
 
 .brand-solutions {
-  color: #219ebc;
+  color: var(--i80-accent);
+}
+
+.navbar-brand .brand-agent {
+  color: #000;
+}
+
+.navbar-brand .brand-dot {
+  color: var(--i80-brand-red);
+}
+
+.brand-red-link {
+  color: var(--i80-brand-red);
+  font-weight: 650;
+}
+
+.brand-red-link:hover {
+  color: #b91f1f;
 }
 
 .nav-link {
@@ -108,6 +126,21 @@ body {
 .btn-primary:hover {
   background: var(--i80-accent-dark);
   border-color: var(--i80-accent-dark);
+}
+
+.btn-brand-red {
+  background: var(--i80-brand-red);
+  border-color: var(--i80-brand-red);
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 650;
+  padding: 0.78rem 1.25rem;
+}
+
+.btn-brand-red:hover {
+  background: #b91f1f;
+  border-color: #b91f1f;
+  color: #fff;
 }
 
 .btn-outline-dark {
@@ -611,6 +644,12 @@ body {
   margin-bottom: 10px;
   font-weight: 760;
   letter-spacing: -0.025em;
+}
+
+.story-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .story-signoff {
